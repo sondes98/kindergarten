@@ -1,0 +1,165 @@
+body{
+  margin: 0 auto;
+}
+.main-nav{
+  margin: 0 auto;
+    top: 0;
+    background-color: #fff;    
+    width: 100%;
+    position: fixed;
+    box-shadow: 0px 0px 3px 0px #747474;
+    z-index : 1;
+
+}
+
+.top-nav{
+  display: flex;
+    justify-content: space-around;
+}
+.auth a{
+  text-decoration: none;
+    font-family: 'Josefin Sans';
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: black;
+}
+.right-side{
+  width: 293px;
+  display: flex;
+  margin-top: 35px;
+  justify-content: space-evenly;
+}
+.main-navbar {
+
+  clear: both;
+  float: left;
+  width: 100%;
+  /* position: relative; */
+  z-index: 999;
+  box-shadow: 0px 4px 2px -2px rgb(0 0 0 / 10%);
+  -webkit-box-shadow: 0px 4px 2px -2px rgb(0 0 0 / 10%);
+  -moz-box-shadow: 0px 4px 2px -2px rgba(0,0,0,0.1);
+  border-top: 5px solid #ebebeb;
+  background: #FFFFFF;
+
+
+}
+.navbar{
+  text-decoration: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    margin-left: 100px;
+
+}
+.logo{
+ width:500px;
+}
+
+.navbar-logo {
+  margin-top: 15px;
+  text-decoration: none;
+  text-align: center;
+  width: 750px;
+  letter-spacing: 10px;
+  font-family: fantasy;
+  color: #94abad;
+  cursor: pointer;
+  font-size: 19px;
+  display: flex;
+}
+.navbar-logo:hover {
+color: pink;
+}
+
+
+.nav-links a {
+  font-family: 'Josefin Sans';
+  text-decoration: none;
+  display: block;
+  margin: 0px;
+  text-transform: uppercase;
+  line-height: 65px;
+  position: relative;
+  margin-top: -5px;
+  border-top: 5px solid #ebebeb;
+  width: 114px;
+  text-align: center;
+  color: black;
+  letter-spacing: 1px;
+}
+
+
+.link1 a{
+  border-color: #F27C7E;
+}
+.link2 a{
+  border-color:#F7C44E;
+}
+.link3 a{
+  border-color:yellow;
+}
+.link4 a{
+  border-color:#E30377;
+}
+.link5 a{
+  border-color:#ACC158;
+}
+.link1 a:hover{
+  color:#F27C7E;
+}
+.link2 a:hover{
+  color:#F7C44E;
+}
+.link3 a:hover{
+  color:yellow;
+}
+.link4 a:hover{
+  color:#E30377;
+}
+.link5 a:hover{
+  color:#ACC158;
+}
+
+
+svg{
+  margin-right: 5px;
+}
+
+/* ------------------------BUTTONS------------------------ */
+:root {
+  --primary:pink;
+}
+
+.btn {
+  margin: 0 auto;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  background-color: pink;
+  width: 114px;
+}
+
+.btn:hover {
+  padding: 6px 18px;
+  transition: all 0.3s ease-out;
+  background-color: transparent;
+ 
+  color: pink;
+  border-radius: 4px;
+  border: 2px solid var(--primary);
+  transition: all 0.3s ease-out;
+}
+
+.auth{
+  display:block;
+}
+
+.card{
+  width: 510px;
+
+}

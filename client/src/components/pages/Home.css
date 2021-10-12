@@ -1,0 +1,123 @@
+.container{
+    margin-top: 168px;
+min-width: 100%;
+}
+.img {
+    position:relative;
+    height:500px;
+    
+  }
+  
+.each-fade {
+    width: 100%;
+ display:flex;
+ justify-content: center;
+
+  }
+
+
+
+.class1{
+    height: 500px;
+   
+    width: 100%;
+ box-shadow: 0px 0px 0px 1px #747474;
+ background-image: url("../images/four.jpg");
+ background-repeat: no-repeat;
+ background-size: 100%;
+ display:flex;
+ justify-content:center;
+ flex-direction:column;
+
+ letter-spacing: 2px;
+ text-align: center;
+ font-size: 61px;
+ color: aliceblue;
+ font-family: monospace;
+}
+
+.class2{
+    height: 500px;
+   
+    width: 100%;
+ box-shadow: 0px 0px 0px 1px #747474;
+ background-image: url("../images/six.jpg");
+ background-repeat: no-repeat;
+ background-size: 100%;
+ display:flex;
+ justify-content:center;
+ flex-direction:column;
+ letter-spacing: 2px;
+ text-align: center;
+ font-size: 61px;
+ color: aliceblue;
+ font-family: monospace;
+}
+
+.class3{
+    height: 500px;
+   
+    width: 100%;
+ box-shadow: 0px 0px 0px 1px #747474;
+ background-image: url("../images/five.jpg");
+ background-repeat: no-repeat;
+ background-size: 100%;
+ display:flex;
+ justify-content:center;
+ flex-direction:column;
+ letter-spacing: 2px;
+    text-align: center;
+    font-size: 61px;
+    color: aliceblue;
+    font-family: monospace;
+
+
+
+}
+
+.btn {
+   
+    margin: 0 auto;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    background-color: pink;
+    width: 193px;
+    font-family: inherit;
+  }
+  
+  .btn:hover {
+    padding: 6px 18px;
+    transition: all 0.3s ease-out;
+    background-color: transparent;
+   
+    color: pink;
+    border-radius: 4px;
+    border: 2px solid var(--primary);
+    transition: all 0.3s ease-out;
+  }
+
+.prog{
+  margin-top: 75px;
+    display: flex;
+    justify-content: center;
+}
+
+.title1{
+  font-family: 'Josefin Sans';
+  font-weight: 300;
+  letter-spacing: 10px;
+  text-align: end;
+  color: crimson;
+}
+.prog-list li { 
+  line-height: 32px;
+  letter-spacing: 1px;
+  list-style: none;
+  font-family: 'Josefin Sans';
+  font-weight: 500;
+  color: black;
+}
