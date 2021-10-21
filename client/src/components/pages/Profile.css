@@ -1,3 +1,19 @@
-.container{
+.profile{
     margin-top: 200px;
+    margin-bottom: 200px;
+}
+
+.form{
+    margin-top: 100px;
+    /* margin-left: 420px; */
+    margin-bottom: 100px;
+    margin-left: 420px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px 1px #c5cbbffc;
+    background-color: #ffffff54;
+    /* margin: 0 auto; */
+    width: 603px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }

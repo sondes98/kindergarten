@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login,clearErrors } from "../../redux/userSlice";
-import "./Register.css";
+import "./login.css";
 const LoginP = ({history}) => {
   const dispatch = useDispatch();
 
@@ -26,8 +26,11 @@ const LoginP = ({history}) => {
   };
 
   return (
-    <div className="container">
-      <form className="form">
+    <div className="login-container">
+       <div className="sectionl">
+        <h1>Share with us your child experience here ...</h1>
+      </div>
+      <form className="form-l">
         <label className="form-g">Email</label>
         <input
           className="form-control"
@@ -45,11 +48,12 @@ const LoginP = ({history}) => {
           placeholder="enter your password ..."
           onChange={handleChange}
         />
-        <button className="btn" type="submit" onClick={handleSubmit}>
+        <button className="btn1" type="submit" onClick={handleSubmit}>
           login
         </button>
         {user && user.loginErrors && <p>{user.loginErrors} </p>}
       </form>
+     
     </div>
   );
 };

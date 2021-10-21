@@ -1,13 +1,13 @@
 import React from "react";
-import "./Contact.css";
-const Contact = () => {
+import "./Staffs.css";
+const Staffs = () => {
   return (
     <div>
       <div className="sec1">
-        <h1>Contact Us</h1>
+        <h1>Our Staffs</h1>
       </div>
     </div>
   ); 
 };
 
-export default Contact;
+export default Staffs;

@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  getPosts,
   getSinglePost,
   updatePost,
   updatePostComment,
   updatePostImage,
   updatePostLike,
-} from '../../redux/postSlice';
+} from '../redux/postSlice';
 
 
-const PostDetails = ({match}) => {
+const PostDetails = ({ match, history }) => {
   const dispatch = useDispatch();
   const [updatedInfo, setUpdatedInfo] = useState({});
   const [commentInfo, setCommentInfo] = useState('');
@@ -17,10 +18,10 @@ const PostDetails = ({match}) => {
   useEffect(() => {
     dispatch(getSinglePost(match.params.id));
   }, []);
-  const { post} = useSelector((state) => state.post);
+  const { post, loading } = useSelector((state) => state.post);
 
   const checkLike = (post) => {
-    return post.likes.some((likeId) => likeId === user.userInfo._id);
+    return post.likes.some((likeId) => likeId == user.userInfo._id);
   };
   const handleUpdate = (e) => {
     setUpdatedInfo({ ...updatedInfo, [e.target.name]: e.target.value });
@@ -43,7 +44,7 @@ const PostDetails = ({match}) => {
     <div>
       {post && post.title && (
         <>
-          <h4>{post.owner.parentsFullName}</h4>
+          {/* <h4>{post.owner.parentsFullName}</h4> */}
           <h2>{post.title} </h2>
           <img src={post.image.imageURL} alt='workshop' width='200' />
           <p>{post.description}</p>
@@ -97,7 +98,7 @@ const PostDetails = ({match}) => {
             const time = new Date(comment.createdAt).toLocaleTimeString();
             return (
               <>
-                <h3>{comment.commentOwner.parentsFullName}</h3>
+                <h3>{comment.commentOwner.fullName}</h3>
                 <p>{comment.desc} </p>
                 <span>{`${newDate} ${time}`}</span>
               </>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import logo from "./logo.jpg";
+import logo from "./logo.png";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/userSlice";
 // import { AiOutlineLogin } from "react-icons/ai";
@@ -60,17 +60,17 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="nav-links link2">
-            <Link to="/contact-us" >
+            <Link to="/about-us" >
               ABOUT US
             </Link>
           </li>
           <li className="nav-links link3">
-            <Link to="/contact-us" >
+            <Link to="/ourstaffs" >
               OUR STAFFS
             </Link>
           </li>
           <li className="nav-links link4">
-            <Link to="/contact-us" >
+            <Link to="/events" >
               EVENTS
             </Link>
           </li>

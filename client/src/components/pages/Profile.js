@@ -1,39 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  addNewPost,
-  getPosts,
-  updatePost,
-  updatePostImage,
-  updatePostLike,
-} from '../../redux/postSlice';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addNewPost, getPosts } from "../../redux/postSlice";
+import './Profile.css'
 
 const Profile = ({ history }) => {
   const dispatch = useDispatch();
+  const post = useSelector((state) => state.post)
   const user = useSelector((state) => state.user);
-  const post = useSelector((state) => state.post);
   useEffect(() => {
     if (!user.isAuth) {
-      history.push('/login');
+      history.push("/login");
     } else {
       dispatch(getPosts());
     }
   }, [user.isAuth]);
   const [postInfo, setPostInfo] = useState({});
-  const [updatedInfo, setUpdatedInfo] = useState({});
   const [file, setFile] = useState({});
 
-  const checkLike = (post) => {
-    /* const like = post.likes.find((likeId) => likeId == user.userInfo._id);
-    console.log(like);
-    if (like) {
-      return true;
-    } else {
-      return false;
-    } */
-    return post.likes.some((likeId) => likeId == user.userInfo._id);
-  };
   const handleChange = (e) => {
     setPostInfo({ ...postInfo, [e.target.name]: e.target.value });
   };
@@ -41,90 +24,49 @@ const Profile = ({ history }) => {
     e.preventDefault();
     dispatch(addNewPost({ postInfo, file }));
   };
-  const handleUpdate = (e) => {
-    setUpdatedInfo({ ...updatedInfo, [e.target.name]: e.target.value });
-  };
-  const handleUpdateSubmit = (e, postId) => {
-    e.preventDefault();
-    dispatch(updatePost({ id: postId, data: updatedInfo }));
-  };
-  const handleUpdateImage = (e, postId) => {
-    dispatch(updatePostImage({ id: postId, file: e.target.files[0] }));
-  };
-  const handleLike = (postId, post) => {
-    dispatch(updatePostLike(postId));
-  };
   return (
-    <div className="container">
-      <form>
-        <input type='text' name='title' onChange={handleChange} placeholder='title' />
+    <div className="profile">
+      <form className="form-p">
         <input
-          type='text'
-          name='description'
+          type="text"
+          name="title"
           onChange={handleChange}
-          placeholder='description'
+          placeholder="title"
         />
-        <input type='file' name='file' onChange={(e) => setFile(e.target.files[0])} />
-        <button type='submit' onClick={handleSubmit}>
-          add post
+        <input
+          type="text"
+          name="description"
+          onChange={handleChange}
+          placeholder="description"
+        />
+        <input
+          type="file"
+          name="file"
+          onChange={(e) => setFile(e.target.files[0])}
+        />
+        <button className="btn1" type="submit" onClick={handleSubmit}>
+          Post
         </button>
       </form>
       <br />
-      {/* <div>
-        {post.posts &&
-          post.posts.map((post) => (
-            <>
-              <h4>{post.owner.fullName}</h4>
-              <h2>{post.title} </h2>
-              <Link to={`/post/${post._id}`}>
-                {' '}
-                <img src={post.image.imageURL} alt='workshop' width='200' />
-              </Link>
-              <p>{post.description}</p>
-              <button
-                style={
-                  checkLike(post)
-                    ? { backgroundColor: 'red' }
-                    : { backgroundColor: 'white' }
-                }
-                onClick={() => handleLike(post._id)}
-              >
-                like
-              </button>
-              {post.likes.length}
-              <br />
-              {user.userInfo._id === post.owner._id && (
-                <>
-                  <input
-                    type='file'
-                    name='image'
-                    onChange={(e) => handleUpdateImage(e, post._id)}
-                  />
-                  <form>
-                    <input
-                      type='text'
-                      name='title'
-                      placeholder={post.title}
-                      onChange={handleUpdate}
-                    />
-                    <input
-                      type='text'
-                      name='description'
-                      placeholder={post.description}
-                      onChange={handleUpdate}
-                    />
-                    <button
-                      type='submit'
-                      onClick={(e) => handleUpdateSubmit(e, post._id)}
-                    >
-                      Update
-                    </button>
-                  </form>
-                </>
-              )}
-            </>
-          ))}
-      </div> */}
+      <div>
+      {post?.posts &&
+          post?.posts.map(post => (
+          <>
+         <div>
+        <h1>title</h1>
+        <p>
+          Lorem :;,c ildhczyhc ukgdgqkd ischsbdhcgs scg,svchj ckshdkgsduc
+          yzgdzjb uyukdcb
+        </p>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCK73cc8xlney0puNjz9MHtmU44qrchh5qOQ&usqp=CAU"
+          alt="event"
+        />
+      </div>
+         </>
+        ))}
+      </div>
     </div>
   );
 };

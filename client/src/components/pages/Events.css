@@ -21,57 +21,38 @@
     background-size: cover;
     margin-top: 45px;
 }
-.register-container {
-    /* margin-top: 171px; */
-    width: 100%;
-    /* padding: 93px 0px 137px 6px; */
-    float: left;
-    clear: both;
-    background-color: #008C99;
-    background-image: url(https://kidslifedev.wpengine.com/wp-content/uploads/2020/03/cloud-bg1.png);
-    position: relative;
-    background-position: center top;
-    cursor: pointer;
-}
-.form:hover {
-    padding: 6px 18px;
-    transition: all 0.3s ease-out;
-    background-color: transparent;
 
-    border: 2px solid var(white);
-    
-  }
-
-.form{
-    margin-top: 100px;
-    /* margin-left: 420px; */
-    margin-bottom: 100px;
-    margin-left: 420px;
-    border-radius: 10px;
-    box-shadow: 1px 1px 6px 1px #c5cbbffc;
-    background-color: #ffffff54;
-    /* margin: 0 auto; */
-    width: 603px;
+.add-event{
     display: flex;
+    margin-top: 100px;
+    margin-bottom: 100px;
     flex-direction: column;
-    padding: 20px;
+    width: 500px;
 }
-.form-control {
-    height: 35px;
-}
-.form-g{
-    letter-spacing: 2px;
-    font-family: 'Bubblegum Sans';
-    /* font-family: Bubblegum sans-serif; */
-    padding: 10px;
-    color: hsl(180deg 9% 10%);
-    font-size: 29px;
-}
-input{
-    -webkit-writing-mode: horizontal-tb !important;
-    font-style: normal;
 
-    font-size: 23px;
+.event-input{
+    font-size: 28px;
+    font-family: 'Bubblegum Sans';
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    display: inline-block;
+    -webkit-appearance: auto;
+    cursor: text;
+    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+    margin: 0em;
+    padding: 1px 2px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-color: aliceblue;
+    border-radius: 5px;
+    height: 42px;
+}
+.event-input1{
+    font-style: normal;
+    font-size: 18px;
     font-family: 'Bubblegum Sans';
     text-rendering: auto;
     color: -internal-light-dark(black, white);
@@ -83,6 +64,7 @@ input{
     text-shadow: none;
     display: inline-block;
     text-align: start;
+    -webkit-appearance: auto;
     appearance: auto;
     -webkit-rtl-ordering: logical;
     cursor: text;
@@ -97,50 +79,20 @@ input{
     border-radius: 5px;
     height: 42px;
 }
-select{
-   
-    font-size: 23px;
+
+.add-btn{
+    margin: 0 auto;
+    border-radius: 4px;
+    border: none;
+    font-size: 21px;
+    color: #fff;
+    cursor: pointer;
+    background-color: #80828f9c;
+    width: 100px;
     font-family: 'Bubblegum Sans';
-    color: -internal-light-dark(black, white);
-   
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    appearance: auto;
-    -webkit-rtl-ordering: logical;
-    cursor: text;
-    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
-    margin: 0em;
-    padding: 1px 2px;
-    border-width: 2px;
-    border-style: solid;
-    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
-    border-color: aliceblue;
-    border-radius: 5px;
-    height: 42px;
-}
-.form-control{
-    height: 35px;
-}
-
-
-
-.btn1{
-margin: 54px 205px 54px 205px;
-padding: 10px 20px;
-border-radius: 4px;
-border: none;
-font-size: 30px;
-color: #fff;
-cursor: pointer;
-background-color: #e362799c;
-width: 193px;
-font-family: 'Bubblegum Sans';
   }
   
-  .btn1:hover {
+  .add-btn:hover {
     padding: 6px 18px;
     transition: all 0.3s ease-out;
     background-color: transparent;
@@ -150,3 +102,4 @@ font-family: 'Bubblegum Sans';
     
   }
   
+

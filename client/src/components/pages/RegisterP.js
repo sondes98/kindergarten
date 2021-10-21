@@ -22,7 +22,10 @@ const RegisterP = ({history}) => {
     dispatch(postNewUser(userInput));
   };
   return (
-    <div className="container">
+    <div className="register-container">
+      <div className="sec1">
+        <h1>Register Your Child</h1>
+      </div>
       <form className="form">
         <label className="form-g">Child's First Name</label>
         <input
@@ -40,13 +43,16 @@ const RegisterP = ({history}) => {
           onChange={handleChange}
           placeholder="Enter your child's Last Name..."
         />
-        <label className="form-g"> Select you gender</label>
+        <label className="form-g"> Select your child's gender</label>
         <select
           className="form-control"
           name="gender"
           onChange={handleChange}
           placeholder="Select your gender..."
         >
+           <option value="Option" name="gender" onChange={handleChange}>
+            Option
+          </option>
           <option value="male" name="gender" onChange={handleChange}>
             Male
           </option>
@@ -92,7 +98,7 @@ const RegisterP = ({history}) => {
           placeholder="Enter your password..."
         />
 
-        <button className="btn" type="submit" onClick={handleSubmit}>
+        <button className="btn1" type="submit" onClick={handleSubmit}>
           Register
         </button>
         {user && user.registerErrors && <p>{user.registerErrors} </p>}

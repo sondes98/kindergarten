@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
-const postSchema = new schema({
+const eventSchema = new schema({
   createdAt: {
     type: Date,
     default: Date.now(),
@@ -16,12 +16,8 @@ const postSchema = new schema({
   },
   owner: {
     type: mongoose.Types.ObjectId,
-    ref: 'User',
+    ref: 'admin',
     required: true,
-  },
-  likes: {
-    type: [mongoose.Types.ObjectId],
-    default: [],
   },
   image: {
     imageURL: {
@@ -31,15 +27,5 @@ const postSchema = new schema({
       type: String,
     },
   },
-  comments: [
-    {
-      commentOwner: { type: mongoose.Types.ObjectId, ref: 'User' },
-      desc: String,
-      createdAt: {
-        type: Date,
-        default: new Date(),
-      },
-    },
-  ],
 });
-module.exports = mongoose.model('post', postSchema);
+module.exports = mongoose.model('event', eventSchema);

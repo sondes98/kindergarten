@@ -1,32 +1,32 @@
 const cloudinary = require("../helpers/cloudinary");
-const post = require("../models/postSchema");
+const event = require("../models/eventSchema");
 
-const addPost = async (req, res) => {
+const addEvent = async (req, res) => {
   try {
     const newBody = JSON.parse(req.body.info);
     const imageInfo = await cloudinary.uploader.upload(req.file.path);
-    const newPost = await post.create({
+    const newEvent = await event.create({
       title: newBody.title,
       description: newBody.description,
       owner: req.userId,
       image: { imageURL: imageInfo.url, public_id: imageInfo.public_id },
     });
-    res.json(newPost);
+    res.json(newEvent);
   } catch (error) {
     res.status(500).json({ message: error });
   }
 };
 
-const getPosts = async (req, res) => {
+const getEvents = async (req, res) => {
   try {
-    const posts = await post.find({});
-    res.status(200).json(posts);
+    const events = await event.find();
+    res.status(200).json(events);
   } catch (error) {
     res.status(500).json({ message: error });
   }
 };
 
 module.exports = {
-  addPost,
-  getPosts,
+  addEvent,
+  getEvents,
 };

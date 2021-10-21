@@ -23,93 +23,20 @@ export const addNewPost = createAsyncThunk(
     }
   }
 );
-export const updatePost = createAsyncThunk(
-  'posts/updatePost',
-  async (info, { rejectWithValue, dispatch }) => {
-    try {
-      const res = await axios.put(`http://localhost:5000/auth/posts/update/${info.id}`, info.data, {
-        headers: { token: localStorage.getItem('token') },
-      });
-      dispatch(getPosts());
-      return res.data;
-    } catch (error) {
-      return rejectWithValue(error.response.data.message);
-    }
-  }
-);
-export const updatePostImage = createAsyncThunk(
-  'posts/updatePostImage',
-  async (info, { rejectWithValue, dispatch }) => {
-    try {
-      const formData = new FormData();
-      formData.append('postImg', info.file);
-      const res = await axios.put(`/posts/uploadimg/${info.id}`, formData, {
-        headers: { token: localStorage.getItem('token') },
-      });
-      dispatch(getPosts());
-      return res.data;
-    } catch (error) {
-      return rejectWithValue(error.response.data.message);
-    }
-  }
-);
-export const updatePostLike = createAsyncThunk(
-  'posts/updatePostLike',
-  async (postId, { rejectWithValue, dispatch }) => {
-    try {
-      const res = await axios.put(
-        `/posts/likes/${postId}`,
-        {},
-        {
-          headers: { token: localStorage.getItem('token') },
-        }
-      );
-      dispatch(getSinglePost(postId));
-      return res.data;
-    } catch (error) {
-      return rejectWithValue(error.response.data.message);
-    }
-  }
-);
-export const updatePostComment = createAsyncThunk(
-  'posts/updatePostComment',
-  async (info, { rejectWithValue, dispatch }) => {
-    try {
-      const res = await axios.put(
-        `/posts/comment/${info.postId}`,
-        { desc: info.desc },
-        {
-          headers: { token: localStorage.getItem('token') },
-        }
-      );
-      return res.data;
-    } catch (error) {
-      return rejectWithValue(error.response.data.message);
-    }
-  }
-);
+
 export const getPosts = createAsyncThunk(
   'posts/getPosts',
   async (info, { rejectWithValue }) => {
     try {
-      const res = await axios.get('/posts', info);
-      return res.data;
+      const res = await axios.get('http://localhost:5000/auth/posts');
+      return res.data.lengh > 0 ? res.data : [];
     } catch (error) {
       return rejectWithValue(error.response.data.message);
     }
   }
 );
-export const getSinglePost = createAsyncThunk(
-  'posts/getSinglePost',
-  async (id, { rejectWithValue }) => {
-    try {
-      const res = await axios.get(`/posts/getpost/${id}`);
-      return res.data;
-    } catch (error) {
-      return rejectWithValue(error.response.data.message);
-    }
-  }
-);
+
+
 
 const postSlice = createSlice({
   name: 'posts',
@@ -126,6 +53,7 @@ const postSlice = createSlice({
     },
     [addNewPost.fulfilled]: (state, action) => {
       state.loading = false;
+      state.post = action.payload;
       state.postErrors = null;
     },
     [addNewPost.rejected]: (state, action) => {
@@ -144,22 +72,8 @@ const postSlice = createSlice({
       state.loading = false;
       state.errors = action.payload;
     },
-    [getSinglePost.pending]: (state) => {
-      state.loading = true;
-    },
-    [getSinglePost.fulfilled]: (state, action) => {
-      state.post = action.payload;
-      state.loading = false;
-      state.postsErrors = null;
-    },
-    [getSinglePost.rejected]: (state, action) => {
-      state.loading = false;
-      state.errors = action.payload;
-    },
-    [updatePostComment.fulfilled]: (state, action) => {
-      state.post = action.payload;
-    },
   },
 });
+
 
 export default postSlice.reducer;

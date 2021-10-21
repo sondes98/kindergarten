@@ -1,0 +1,23 @@
+.sec1 {
+    height: 100px;
+    background-color: #008C99;
+    margin-top: 172px;
+}
+.sec1 h1{
+    padding: 9px;
+    font-family: 'Bubblegum Sans';
+    letter-spacing: 12px;
+    color: white;
+    text-align: center;
+    font-size: 73px;
+}
+.sec1 :after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    height: 46px;
+    background: url(../images/footer_top_bg.png) center top no-repeat;
+    background-size: cover;
+    margin-top: 45px;
+}
