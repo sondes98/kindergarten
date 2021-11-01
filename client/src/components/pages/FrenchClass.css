@@ -1,0 +1,129 @@
+.teacher {
+    display: block;
+    width: 100%;
+    float: none;
+    margin-right: 24px;
+    max-width: 220px;
+    max-height: 192px;
+}
+
+.teacher img {
+    height: auto;
+    float: left;
+    width: 100%;
+    clear: both;
+}
+
+.teacher .item-mask {
+    width: 225px;
+    position: absolute;
+    transition: all 0.2s ease 0s;
+    z-index: 9
+}
+
+.sec2F{
+    justify-content: center;
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.sec2F h1{
+    font-family: 'Bubblegum Sans';
+    letter-spacing: 2px;
+    font-size: 30px;
+}
+
+.sec2F h2{
+    font-family: 'Josefin Sans';
+    letter-spacing: 2px;
+}
+
+.french{
+    margin-top:30px;
+    padding: 20px;
+    display: block;
+    background-color: #008C99;
+    width: 500px;
+}
+
+.french h3{
+    margin: 0;
+    font-family: 'Bubblegum Sans';
+    font-size: 30px;
+    letter-spacing: 2px;
+}
+
+.french h4{
+    font-family: 'Josefin Sans';
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.containerF{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 100px;    
+}
+
+.columnf.first {
+    margin-left: 0px;
+    clear: both;
+}
+
+.columnf {
+    float: left;
+    margin: 0px 0px 0px 0px;
+}
+
+.dt-sc-one-fourth {
+    width: 22.5%;
+}
+
+.dt-sc-colored-box {
+    float: left;
+    width: 100%;
+    padding: 20px 0px 10px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-top: 5px solid;
+    border-bottom: 5px solid;
+    text-align: center;
+}
+
+.mustard{
+    background: #f7c44e;
+    border-color: #e5b138;
+}
+
+.dt-sc-colored-box img {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.columnf img {
+    width: 304px;
+    height: 197px;
+}
+
+.dt-sc-colored-box p {
+    padding: 20px 20px;
+    margin: 0px 0px 10px;
+    color: #2f2f2f;
+}
+
+.dt-sc-colored-box.green {
+    background: #acc158;
+    border-color: #879b37;
+}
+
+.dt-sc-colored-box.pink {
+    background: #de81b8;
+    border-color: #c95f9e;
+}
+
+.dt-sc-colored-box.blue{
+    background: #4cbcd4;
+    border-color: #2ca0b9;
+}

@@ -27,8 +27,8 @@
     /* padding: 93px 0px 137px 6px; */
     float: left;
     clear: both;
-    background-color: #008C99;
-    background-image: url(https://kidslifedev.wpengine.com/wp-content/uploads/2020/03/cloud-bg1.png);
+    /* background-color: #008C99;
+    background-image: url(https://kidslifedev.wpengine.com/wp-content/uploads/2020/03/cloud-bg1.png); */
     position: relative;
     background-position: center top;
     cursor: pointer;
@@ -68,58 +68,28 @@
     font-size: 29px;
 }
 input{
-    -webkit-writing-mode: horizontal-tb !important;
-    font-style: normal;
-
-    font-size: 23px;
-    font-family: 'Bubblegum Sans';
-    text-rendering: auto;
-    color: -internal-light-dark(black, white);
-    letter-spacing: normal;
-    word-spacing: normal;
-    /* line-height: 20px; */
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    appearance: auto;
-    -webkit-rtl-ordering: logical;
+    background-color: #ffffff40;
+    font-size: 28px;
+    font-family: 'Josefin Sans';
+    letter-spacing: 6px;
     cursor: text;
-    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
-    margin: 0em;
+    margin: 1em;
     padding: 1px 2px;
     border-width: 2px;
     border-style: solid;
-    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
-    /* border-image: initial; */
-    border-color: aliceblue;
-    border-radius: 5px;
-    height: 42px;
+    border-color: #f0f8ff21;
 }
 select{
-   
-    font-size: 23px;
-    font-family: 'Bubblegum Sans';
-    color: -internal-light-dark(black, white);
-   
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    appearance: auto;
-    -webkit-rtl-ordering: logical;
+    background-color: #ffffff40;
+    font-size: 28px;
+    font-family: 'Josefin Sans';
+    letter-spacing: 6px;
     cursor: text;
-    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
-    margin: 0em;
+    margin: 1em;
     padding: 1px 2px;
     border-width: 2px;
     border-style: solid;
-    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
-    border-color: aliceblue;
-    border-radius: 5px;
-    height: 42px;
+    border-color: #f0f8ff21;
 }
 .form-control{
     height: 35px;
@@ -137,12 +107,11 @@ color: #fff;
 cursor: pointer;
 background-color: #e362799c;
 width: 193px;
-font-family: 'Bubblegum Sans';
+font-family: 'Josefin Sans';
   }
   
   .btn1:hover {
     padding: 6px 18px;
-    transition: all 0.3s ease-out;
     background-color: transparent;
     color: #e362799c;
     border-radius: 4px;

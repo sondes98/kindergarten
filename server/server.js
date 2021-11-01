@@ -15,28 +15,26 @@ const cors = require("cors");
 app.use(cors());
 
 //setup for deployment :
-app.use(express.static(path.join(__dirname, "../", "client", "build")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../", "client", "build", "index.html"));
-});
 
 io.on("connection", () => {
   console.log("a user is connected");
 });
 
 //ROUTES
-const adminRoute = require("./routes/adminRoutes");
 const userRoute = require("./routes/userRoutes");
 const postRoute = require("./routes/postRoutes");
-const eventRoute = require("./routes/eventRoutes")
-const messageRoute = require("./routes/messageRoutes");
-app.use("/auth/admin", adminRoute);
+const eventRoute = require("./routes/eventRoutes");
+
 app.use("/auth/users", userRoute);
 app.use("/auth/posts", postRoute);
 app.use("/auth/events", eventRoute);
-app.use("/auth/messages", messageRoute);
 app.use("/uploads", express.static(path.join(__dirname, "../", "uploads")));
 
+// deployment
+// app.use(express.static(path.join(__dirname, "../", "client", "build")));
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../", "client", "build", "index.html"));
+// });
 //CONNECTING TO DB
 mongoose.connect(process.env.MONGO_URI, (err) =>
   err ? console.error(err) : console.log("database is connected")

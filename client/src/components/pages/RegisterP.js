@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postNewUser } from "../../redux/userSlice";
 import "./Register.css";
+import { Link } from "react-router-dom";
+
 
 const RegisterP = ({history}) => {
   const dispatch = useDispatch();
@@ -9,7 +11,7 @@ const RegisterP = ({history}) => {
   const user = useSelector((state) => state.user);
   useEffect(() => {
     if (user.isAuth) {
-      history.push("/profile");
+      history.push("/payement");
     } else {
       history.push("/register");
     }
@@ -23,11 +25,11 @@ const RegisterP = ({history}) => {
   };
   return (
     <div className="register-container">
-      <div className="sec1">
-        <h1>Register Your Child</h1>
-      </div>
+       <li className="Profile-link">
+                    <Link to="/">Home </Link>
+                  </li> 
       <form className="form">
-        <label className="form-g">Child's First Name</label>
+        {/* <label className="form-g">Child's First Name</label> */}
         <input
           type="text"
           className="form-control"
@@ -35,7 +37,7 @@ const RegisterP = ({history}) => {
           onChange={handleChange}
           placeholder="Enter Child's First Name..."
         />
-        <label className="form-g">Child's Last Name</label>
+        {/* <label className="form-g">Child's Last Name</label> */}
         <input
           type="text"
           className="form-control"
@@ -43,7 +45,7 @@ const RegisterP = ({history}) => {
           onChange={handleChange}
           placeholder="Enter your child's Last Name..."
         />
-        <label className="form-g"> Select your child's gender</label>
+        {/* <label className="form-g"> Select your child's gender</label> */}
         <select
           className="form-control"
           name="gender"
@@ -63,7 +65,7 @@ const RegisterP = ({history}) => {
             other
           </option>
         </select>
-        <label className="form-g">Chid's Birth Date</label>
+        {/* <label className="form-g">Chid's Birth Date</label> */}
         <input
           type="date"
           className="form-control"
@@ -71,7 +73,7 @@ const RegisterP = ({history}) => {
           onChange={handleChange}
           placeholder="Enter your child birth date..."
         ></input>
-        <label className="form-g">Parent's Full Name</label>
+        {/* <label className="form-g">Parent's Full Name</label> */}
         <input
           type="text"
           className="form-control"
@@ -80,7 +82,7 @@ const RegisterP = ({history}) => {
           placeholder="Enter your full name..."
         />
 
-        <label className="form-g">Email</label>
+        {/* <label className="form-g">Email</label> */}
         <input
           type="text"
           className="form-control"
@@ -89,7 +91,7 @@ const RegisterP = ({history}) => {
           placeholder="Enter your email address..."
         />
 
-        <label className="form-g">Password</label>
+        {/* <label className="form-g">Password</label> */}
         <input
           type="password"
           className="form-control"
@@ -102,7 +104,9 @@ const RegisterP = ({history}) => {
           Register
         </button>
         {user && user.registerErrors && <p>{user.registerErrors} </p>}
+
       </form>
+
     </div>
   );
 };

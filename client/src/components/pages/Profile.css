@@ -1,19 +1,208 @@
-.profile{
-    margin-top: 200px;
-    margin-bottom: 200px;
+html{
+    background-color: #F0F3F3;;
+    background-image: url(https://kidslifedev.wpengine.com/wp-content/uploads/2020/03/cloud-bg1.png);
+
+}
+.sectionl {
+    height: 100px;
+    background-color: #008C99;
+    margin-top: 72px;
+}
+.sectionl h1{
+    padding: 9px;
+    font-family: 'Bubblegum Sans';
+    letter-spacing: 12px;
+    color: white;
+    text-align: center;
+    font-size: 50px;
+}
+.sectionl :after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    height: 46px;
+    background: url(../images/footer_top_bg.png) center top no-repeat;
+    background-size: cover;
+    margin-top: 19px;
 }
 
-.form{
-    margin-top: 100px;
-    /* margin-left: 420px; */
-    margin-bottom: 100px;
-    margin-left: 420px;
-    border-radius: 10px;
-    box-shadow: 1px 1px 6px 1px #c5cbbffc;
-    background-color: #ffffff54;
-    /* margin: 0 auto; */
-    width: 603px;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
+.profile{
+    width: 100%;
 }
+
+
+.sideprofile{
+    background-color: rgb(255 255 255 / 0%);
+    height: 844px;
+    display: flex;
+    width: 260px;
+    flex-direction: column;
+    position: fixed;
+    box-shadow: 1px 1px 7px 1px #7474742b;
+    padding-top: 46px;
+}
+.profilepic{
+    width: 200px;
+    border-radius: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.userInfo h1{
+    color: black;
+    text-align: center;
+    font-family: 'Josefin Sans';
+    font-size: 26px;
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+.userInfo h2{
+    margin: 20px;
+    text-align: center;
+    font-size: 36px;
+    letter-spacing: 5px;
+    color: #BF959F;
+    font-family: 'Bubblegum Sans';
+}
+.userInfo h3{
+    margin: 0;
+    text-align: center;
+    font-size: 19px;
+    letter-spacing: 2px;
+    color: #999999;
+    font-family: 'Josefin Sans';
+    font-weight: 100;
+}
+
+
+.cardP{
+    margin: 23px auto;
+    width: 395px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+
+.posts-side{
+    margin-top: 52px;
+        background-image: url(https://kidslifedev.wpengine.com/wp-content/uploads/layerslider/KidsLife-Slider/black-board.jpg);
+        background-color: #ffffff38;
+        margin-left: 520px;
+        display: flex;
+        position: absolute;
+        width: 520px;
+        border-radius: 30px;
+}
+
+.title-P{
+    color: white;
+    background-color: #ffffff1c;
+    font-size: 15px;
+    font-family: 'Bubblegum Sans';
+    letter-spacing: 1px;
+    cursor: text;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #f9f9f90f;
+    margin: 0.2rem;
+}
+.desc-P{
+    color: white;
+    background-color: #ffffff1c;
+    font-size: 15px;
+    font-family: 'Bubblegum Sans';
+    letter-spacing: 1px;
+    cursor: text;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #f9f9f90f;
+    margin: 0.2rem;
+}
+input:focus
+{
+    box-shadow: 0 0 3px #bfc2c5;
+    outline-offset: 0px;
+    outline: none;
+}
+
+.Profile-nav{
+    text-decoration: none;
+    display: block;
+    margin: 67px auto;
+}
+
+.Profile-link{
+    padding: 15px;
+    list-style: none;
+    text-decoration: none;
+    margin-top: 20px;
+
+}
+
+.Profile-link a{
+    text-decoration: none;
+    font-family: 'Josefin Sans';
+    font-weight: 200;
+    color: black;
+    font-size: 23px;
+    letter-spacing: 2px;
+}
+.Profile-list{
+    display: flex;
+    margin-top: 78px;
+    justify-content: space-around;
+}
+.btn-file {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+  }
+
+  .btnB{
+    margin: 18px auto;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    background-color: #ffc0cba8;
+    width: 110px;
+    font-family: 'Bubblegum Sans';
+  }
+
+  .allposts{
+    margin-left: 161px;
+    background-color: #ffffff36;
+    width: 520px;
+    margin-top: 364px;
+  }
+.cardP h1{
+    font-family: 'Bubblegum Sans';
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+  .Ppost{
+    margin-left: 117px;
+    border-radius: 100%;
+    display: block;
+    /* margin: 0 auto; */
+    width: 289px;
+  }

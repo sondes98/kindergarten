@@ -1,7 +1,7 @@
 .sectionl {
     height: 100px;
     background-color: #008C99;
-    margin-top: 172px;
+    margin-top: 72px;
 }
 .sectionl h1{
     padding: 9px;
@@ -21,16 +21,7 @@
     background-size: cover;
     margin-top: 19px;
 }
-.login-container {
-    width: 100%;
-    float: left;
-    clear: both;
-    background-color: #008C99;
-    background-image: url(https://kidslifedev.wpengine.com/wp-content/uploads/2020/03/cloud-bg1.png);
-    position: relative;
-    background-position: center top;
-    cursor: pointer;
-}
+
 .form:hover {
     padding: 6px 18px;
     transition: all 0.3s ease-out;
@@ -41,12 +32,11 @@
   }
 
 .form-l{
+    background-image: url(../images/footer_bg.png);
+    background-color: #ffffff38;
     margin-left: 420px;
-
     margin-top: 100px;
     border-radius: 10px;
-    box-shadow: 1px 1px 6px 1px #c5cbbffc;
-    background-color: #ffffff54;
     width: 603px;
     display: flex;
     flex-direction: column;
@@ -84,4 +74,6 @@ font-family: 'Bubblegum Sans';
     border: 2px solid var(--primary);
     
   }
+
+
   

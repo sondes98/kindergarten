@@ -4,7 +4,7 @@ const schema = mongoose.Schema;
 const postSchema = new schema({
   createdAt: {
     type: Date,
-    default: Date.now(),
+    default: new Date(),
   },
   description: {
     type: String,
@@ -16,7 +16,7 @@ const postSchema = new schema({
   },
   owner: {
     type: mongoose.Types.ObjectId,
-    ref: 'User',
+    ref: 'user',
     required: true,
   },
   likes: {

@@ -1,0 +1,138 @@
+.SPost{
+
+    width: 650px;
+    margin:50px auto;
+}
+.likebtn{
+    width: 43px;
+   size: 31px;
+    stroke: currentcolor;
+    fill: currentcolor;
+    stroke-width: 12px;
+    height: 41px;
+    width: 39px;
+}
+
+.boardPoster {
+    padding: 50px;
+    width: 600px;
+    background-image: url(https://kidslifedev.wpengine.com/wp-content/uploads/layerslider/KidsLife-Slider/black-board.jpg);
+    margin: 0 auto;
+    border-radius: 12px;
+}
+.boardPoster img{
+    margin: 0 auto;
+    display: -webkit-box;
+}
+.boardPoster h4{
+    color: #fff;
+    letter-spacing: 1px;
+    font-family: 'Bubblegum Sans';
+    margin: 10px;
+    text-align: center;
+}
+
+.boardPoster h2{
+    font-family: 'Bubblegum Sans';
+    letter-spacing: 2px;
+    color: #fff;
+    font-size: 28px;
+}
+
+.boardPoster h5{
+    letter-spacing: 1px;
+    font-family: 'Bubblegum Sans';
+    font-size: 20px;
+    text-align: left;
+    color: #fff;
+    margin: 0;
+}
+.postEditor {
+    padding: 38px;
+    display: flex;
+    width: 600px;
+    background-image: url(https://kidslifedev.wpengine.com/wp-content/uploads/layerslider/KidsLife-Slider/black-board.jpg);
+    margin: 0 auto;
+    border-radius: 12px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 316px;
+}
+.title-T{
+    color: white;
+    background-color: #ffffff1c;
+    font-size: 15px;
+    font-family: 'Bubblegum Sans';
+    letter-spacing: 1px;
+    cursor: text;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #f9f9f90f;
+    margin: 0.2rem;
+}
+.desc-T{
+    color: white;
+    background-color: #ffffff1c;
+    font-size: 15px;
+    font-family: 'Bubblegum Sans';
+    letter-spacing: 1px;
+    cursor: text;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #f9f9f90f;
+    margin: 0.2rem;
+}
+textarea:focus
+{
+    box-shadow: 0 0 3px #bfc2c5;
+    outline-offset: 0px;
+    outline: none;
+}
+.btnC{
+    margin: 18px auto;
+        padding: 0px 17px;
+        border-radius: 4px;
+        border: none;
+        font-size: 30px;
+        color: #fff;
+        cursor: pointer;
+        background-color: #b1485aa8;
+        width: 156px;
+        font-family: 'Bubblegum Sans';
+        transition: filter 0.3s ease 0.3s;
+
+}
+.input-C{
+    width: 424px;
+    
+    background-color: #ffffff40;
+    font-size: 20px;
+    font-family: 'Josefin Sans';
+    letter-spacing: 1px;
+    cursor: text;
+    margin: 1em;
+    padding: 7px 2px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #c7828e;
+}
+.btnC:active{
+    filter: drop-shadow(0 0 0 steelblue);
+    transition: filter 0s;
+  }
+
+  .commentArea{
+      background-color: #c7828e;
+      padding:10px;
+  }
+  h3{
+    font-family: 'Josefin Sans';
+    font-weight: 200;
+    font-size: 17px;
+    text-align: end;
+  }
+  p{    font-family: 'Bubblegum Sans';
+    font-size: 20px;
+    background-color: azure;
+    padding: 7px;
+    box-shadow: 0px 0px 0px 0.3px #747474;}

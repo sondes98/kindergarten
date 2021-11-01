@@ -43,6 +43,11 @@ const UserSchema = new schema(
       type: String,
       default: "//ssl.gstatic.com/accounts/ui/avatar_2x.png",
     },
+    role:{
+      type:String,
+      default:'user', 
+      enum:['user','admin']
+    }
   },
   { timestamps: true }
 );

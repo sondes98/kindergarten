@@ -14,16 +14,17 @@ import LearningActivity from "./components/pages/LearningActivity";
 import Events from "./components/pages/Events";
 import Staffs from "./components/pages/Staffs";
 import Contact from "./components/pages/Contact";
-
+import PostDetails from "./components/pages/PostDetails";
+import Paypal from "./components/Paypal";
 function App() {
   return (
     <div>
-          <Navbar />
+         
 
       <Switch>
         <Route exact path="/login" component={LoginP} />
         <Route exact path="/register" component={RegisterP} />
-        <Route exact path="/profile" component={Profile} />
+       
         <Route exact path="/events" component={Events} />
         <Route exact path="/ourstaffs" component={Staffs} />
         <Route exact path="/contact-us" component={Contact} />
@@ -33,8 +34,10 @@ function App() {
         <Route exact path="/outdoorgaming" component={Outdoorgaming} />
         <Route exact path="/learningactivity" component={LearningActivity} />
         <Route exact path="/" component={Home} />
+        <Route exact path='/post/:id' component={PostDetails} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/payement" component={Paypal} />
       </Switch>
-      <Footer />
     </div>
   );
 }

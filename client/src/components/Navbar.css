@@ -72,9 +72,11 @@ body{
   font-size: 19px;
   display: flex;
 }
-.navbar-logo:hover {
+/* .navbar-logo:hover {
 color: pink;
-}
+    transition: all 300ms linear;
+    color: pink;
+} */
 
 
 .nav-links a {
@@ -101,7 +103,7 @@ color: pink;
   border-color:#F7C44E;
 }
 .link3 a{
-  border-color:yellow;
+  border-color:#4CBCD4;
 }
 .link4 a{
   border-color:#E30377;
@@ -110,19 +112,30 @@ color: pink;
   border-color:#ACC158;
 }
 .link1 a:hover{
-  color:#F27C7E;
+  
+  transition: all 200ms linear;
+  color: white;
+  background-color:#F27C7E;
 }
 .link2 a:hover{
-  color:#F7C44E;
+  transition: all 200ms linear;
+  color: white;
+  background-color:#F7C44E;
 }
 .link3 a:hover{
-  color:yellow;
+  transition: all 200ms linear;
+  color: white;
+  background-color:#4CBCD4;
 }
 .link4 a:hover{
-  color:#E30377;
+  transition: all 200ms linear;
+  color: white;
+  background-color:#E30377;
 }
 .link5 a:hover{
-  color:#ACC158;
+  transition: all 200ms linear;
+  color: white;
+  background-color:#ACC158;
 }
 
 

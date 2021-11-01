@@ -3,6 +3,9 @@ import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import "./About.css";
 import { Link } from "react-router-dom";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
+
 
 const Contact = () => {
   const fadeProperties = {
@@ -11,6 +14,7 @@ const Contact = () => {
   };
   return (
     <>
+    <Navbar/>
       <div className="sec1">
         <h1>About Us</h1>
       </div>
@@ -99,6 +103,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

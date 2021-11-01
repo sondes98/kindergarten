@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login,clearErrors } from "../../redux/userSlice";
 import "./login.css";
+import { Link } from "react-router-dom";
+
 const LoginP = ({history}) => {
   const dispatch = useDispatch();
 
@@ -27,11 +29,12 @@ const LoginP = ({history}) => {
 
   return (
     <div className="login-container">
-       <div className="sectionl">
-        <h1>Share with us your child experience here ...</h1>
-      </div>
+      <li className="Profile-link">
+                    <Link to="/">Home </Link>
+                  </li>
+       
       <form className="form-l">
-        <label className="form-g">Email</label>
+        {/* <label className="form-g">Email</label> */}
         <input
           className="form-control"
           type="email"
@@ -39,7 +42,7 @@ const LoginP = ({history}) => {
           placeholder="enter your email address ..."
           onChange={handleChange}
         />
-        <label className="form-g">Password</label>
+        {/* <label className="form-g">Password</label> */}
 
         <input
           className="form-control"
