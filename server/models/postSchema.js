@@ -21,7 +21,7 @@ const postSchema = new schema({
   },
   likes: {
     type: [mongoose.Types.ObjectId],
-    default: [],
+    default:[],
   },
   image: {
     imageURL: {

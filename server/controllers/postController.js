@@ -10,7 +10,7 @@ const addPost = async (req, res) => {
     const imageInfo = await cloudinary.uploader.upload(req.file.path);
     const newPost = await Post.create({
       title: newBody.title,
-      description: newBody.description,  
+      description: newBody.description,
       owner: req.userId,
       image: { imageURL: imageInfo.url, public_id: imageInfo.public_id },
     });
@@ -31,9 +31,9 @@ const getPosts = async (req, res) => {
 
 const getSinglePost = async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id)
-      // .populate('owner', '-password -__v')
-      // .populate('comments.commentOwner', '-password -__v');
+    const post = await Post.findById(req.params.id);
+    // .populate('owner', '-password -__v')
+    // .populate('comments.commentOwner', '-password -__v');
     res.status(200).json(post);
   } catch (error) {
     res.status(500).json({ message: error });
@@ -97,15 +97,23 @@ const addComment = async (req, res) => {
         $push: { comments: { commentOwner: req.userId, desc } },
       },
       { new: true }
-    )
+    );
     res.json(newPost);
   } catch (error) {
     res.status(500).json({ message: error });
   }
 };
-
+const deletePost = async (req, res) => {
+  try {
+    const deletedPost = await Post.findByIdAndDelete(req.params.id);
+    res.status(200).json(deletedPost);
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+};
 
 module.exports = {
+  deletePost,
   addPost,
   getPosts,
   getSinglePost,
@@ -114,6 +122,3 @@ module.exports = {
   postLikes,
   addComment,
 };
-
-
-

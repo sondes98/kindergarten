@@ -1,0 +1,122 @@
+.ReactTable {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+}
+.jss594 {
+    width: 820px;
+    flex: 1 1 auto;
+    padding: 0.9375rem 20px;
+    position: relative;
+    -webkit-box-flex: 1;
+    margin: 16px auto;
+    background-color: #fff;
+}
+.ReactTable .rt-table {
+    flex: auto 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    border-collapse: collapse;
+    overflow: auto;
+}
+.ReactTable .rt-thead {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.ReactTable .rt-thead .rt-tr {
+    text-align: center;
+}
+.ReactTable .rt-thead .rt-resizable-header {
+    overflow: visible;
+}
+
+.ReactTable .rt-thead .rt-th {
+    font-size: 1.063rem;
+    text-align: left;
+    font-weight: 300;
+    line-height: 2.5em!important;
+    padding: 5px;
+    line-height: normal;
+    position: relative;
+    transition: box-shadow .3s cubic-bezier(.175,.885,.32,1.275);
+    box-shadow: inset 0 0 0 0 transparent;
+}
+.ReactTable .rt-thead .rt-resizable-header-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 160px;
+    text-align: center;
+
+}
+.columnHeader{
+    text-align: left;
+    margin: 0;
+    padding: -4px;
+    height: 36px;
+    font-family: 'Josefin Sans';
+    font-size: 23px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+.ReactTable .rt-tbody {
+    flex: 99999 1 auto;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+.ReactTable.-striped .rt-tr.-odd {
+    background: rgba(0,0,0,.03);
+}
+.ReactTable .rt-tr {
+    height: 51px;
+    
+    flex: 1 0 auto;
+    display: inline-flex;
+}
+.ReactTable .rt-td, .ReactTable .rt-th {
+    font-family: 'Josefin Sans';
+
+    flex: 1 0;
+    text-overflow: ellipsis;
+    padding: 7px 5px;
+    overflow: hidden;
+    transition: .3s ease;
+    transition-property: width,min-width,padding,opacity;
+    margin: auto;
+}
+.ReactTable .rt-tbody .rt-td:last-child {
+    border-right: 0;
+}
+.ReactTable .actions-right {
+    text-align: right;
+}
+.jss467 {
+        /* width: 8
+    px
+    ; */
+        height: 12px;
+        font-size: 11px;
+        /* min-width: 41
+    px
+    ; */
+        padding-left: 2px;
+        /* padding-right: 12px
+    ; */
+    
+}
+.ReactTable .rt-tr {
+    flex: 1 0 auto;
+    display: inline-flex;
+}
+
+tr:hover {background-color: rgba(218, 192, 229, 0.411);}
+th, td {
+    border-bottom: 1px solid #ddd;
+  }

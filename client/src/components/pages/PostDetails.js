@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  deletePost,
   getSinglePost,
   updatePost,
   updatePostComment,
@@ -44,21 +45,11 @@ const PostDetails = ({ match, history }) => {
     e.preventDefault();
     dispatch(updatePostComment({ postId, desc: commentInfo }));
   };
-  const handleDeleteSubmit = (e, post) => {
+  const handleDeleteSubmit = (e, postId) => {
     e.preventDefault();
+    dispatch(deletePost({ id: postId }));
   };
-  const inputRef = useRef(true);
 
-  const changeFocus = (e) => {
-    if (e.which === 13) {
-      inputRef.current.disabled = false;
-      inputRef.current.focus();
-    }
-  };
-  const update = (id, value, e) => {
-    updatePost({ id, post: value });
-    inputRef.current.disabled = true;
-  };
   return (
     <div className="SPost">
       {post && post.title && (
@@ -80,6 +71,7 @@ const PostDetails = ({ match, history }) => {
                   defaultValue={post.title}
                   onChange={handleUpdate}
                 />
+
                 <AiFillEdit
                   type="submit"
                   onClick={(e) => handleUpdateSubmit(e, post._id)}
@@ -97,20 +89,102 @@ const PostDetails = ({ match, history }) => {
                   onClick={(e) => handleUpdateSubmit(e, post._id)}
                   style={{ color: "black" }}
                 />
+                <button
+                  type="submit"
+                  onClick={(e) => handleDeleteSubmit(e, post._id)}
+                  className="btn-file btnC"
+                >
+                  Delete
+                </button>
               </div>
-              {post.likes.length}
-              <AiFillLike
-                className="likebtn"
-                style={checkLike(post) ? { color: "blue" } : { color: "gray" }}
-                onClick={() => handleLike(post._id)}
+              <div className="comlike">
+                <h1 className="num">
+                  {" "}
+                  {post.likes.length}{" "}
+                  <AiFillLike
+                    className="likebtn"
+                    style={
+                      checkLike(post) ? { color: "blue" } : { color: "gray" }
+                    }
+                    onClick={() => handleLike(post._id)}
+                  />
+                </h1>
+
+                <h1 className="num">
+                  {post.comments.length}{" "}
+                  <FaComment
+                    className="likebtn"
+                    style={
+                      checkComment(post) ? { color: "blue" } : { color: "gray" }
+                    }
+                  />
+                </h1>
+              </div>
+              <br />
+              <input
+                className="input-C"
+                type="text"
+                onChange={(e) => setCommentInfo(e.target.value)}
               />
-              {post.comments.length}
-              <FaComment
-                className="likebtn"
-                style={
-                  checkComment(post) ? { color: "blue" } : { color: "gray" }
-                }
-              />
+              <button
+                type="submit"
+                onClick={(e) => handleCommentSubmit(e, post._id)}
+                className="btn-file btnC"
+              >
+                Comment
+              </button>
+              {post.comments.map((comment) => {
+                //const date = comment.createdAt.split('T')[0];
+                const newDate = new Date(
+                  comment.createdAt
+                ).toLocaleDateString();
+                const time = new Date(comment.createdAt).toLocaleTimeString();
+                return (
+                  <>
+                    <h3>
+                      {comment.commentOwner.parentsFullName}{" "}
+                      <span>{`${newDate} ${time}`}</span>
+                    </h3>
+                    <p>{comment.desc} </p>
+
+                    <br />
+                  </>
+                );
+              })}
+            </>
+          ) : (
+            <>
+              <div className="boardPoster">
+                <img src={post.image.imageURL} alt="kindergarten" width="200" />
+                <h4>{post.owner}</h4>
+                <h2>{post.title} </h2>
+                <h5>{post.description}</h5>
+              </div>
+              <br />
+              <div className="comlike">
+                <h1 className="num">
+                  {post.likes.length}{" "}
+                  <AiFillLike
+                    className="likebtn"
+                    style={
+                      checkLike(post)
+                        ? { color: "#b3b3f7" }
+                        : { color: "#cfcfcfa1" }
+                    }
+                    onClick={() => handleLike(post._id)}
+                  />
+                </h1>
+
+                <h1 className="num">
+                  {post.comments.length}{" "}
+                  <FaComment
+                    className="likebtn"
+                    style={
+                      checkComment(post) ? { color: "blue" } : { color: "gray" }
+                    }
+                  />
+                </h1>
+              </div>
               <br />
               <input
                 className="input-C"
@@ -132,68 +206,11 @@ const PostDetails = ({ match, history }) => {
                 const time = new Date(comment.createdAt).toLocaleTimeString();
                 return (
                   <>
-                    <h3>
+                    <h3 className="commentaire">
                       {comment.commentOwner.parentsFullName}{" "}
-                      <span>{`${newDate} ${time}`}</span>
+                      <span className="comment-date">{`${newDate} ${time}`}</span>
                     </h3>
-                    <p>{comment.desc} </p>
-
-                    <br />
-                  </>
-                );
-              })}
-            </>
-          ) : (
-            <>
-              <div className="boardPoster">
-              <img src={post.image.imageURL} alt="kindergarten" width="200" />
-                <h4>{post.owner}</h4>
-                <h2>{post.title} </h2>
-                <h5>{post.description}</h5>
-
-              </div>
-              <br/>
-              {post.likes.length}
-              <AiFillLike
-                  className="likebtn"
-                  style={
-                    checkLike(post) ? { color: "blue" } : { color: "gray" }
-                  }
-                  onClick={() => handleLike(post._id)}
-                />
-                {post.comments.length}
-                <FaComment
-                  className="likebtn"
-                  style={
-                    checkComment(post) ? { color: "blue" } : { color: "gray" }
-                  }
-                />
-                <br/>
-              <input
-                className="input-C"
-                type="text"
-                onChange={(e) => setCommentInfo(e.target.value)}
-              />
-              <button
-                type="submit"
-                onClick={(e) => handleCommentSubmit(e, post._id)}
-                className="btn-file btnC"
-              >
-                Comment
-              </button>
-              {post.comments.map((comment) => {
-                // const date = comment.createdAt.split('T')[0];
-                const newDate = new Date(
-                  comment.createdAt
-                ).toLocaleDateString();
-                const time = new Date(comment.createdAt).toLocaleTimeString();
-                return (
-                  <>
-                    <h3>
-                      {comment.commentOwner.parentsFullName}{" "}
-                      <span>{`${newDate} ${time}`}</span>
-                    </h3>
-                    <p>{comment.desc} </p>
+                    <p className="comment-desc">{comment.desc} </p>
 
                     <br />
                   </>
@@ -201,7 +218,6 @@ const PostDetails = ({ match, history }) => {
               })}
             </>
           )}
-
         </>
       )}
     </div>

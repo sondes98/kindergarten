@@ -187,7 +187,7 @@ input:focus
   }
 
   .allposts{
-    margin-left: 161px;
+    margin-left: 514px;
     background-color: #ffffff36;
     width: 520px;
     margin-top: 364px;
@@ -206,3 +206,18 @@ input:focus
     /* margin: 0 auto; */
     width: 289px;
   }
+.Ppost img{
+    width: 341px;
+    border-radius: 100%;
+    height: 323px;
+    filter: contrast(0.3);
+}
+
+.comlikeP{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    margin-top: -206px;
+    z-index: 999;
+    margin-left: 79px;
+}

@@ -111,7 +111,20 @@ export const getSinglePost = createAsyncThunk(
     }
   }
 );
-
+export const deletePost = createAsyncThunk(
+  'posts/deletePost',
+  async (info, { rejectWithValue, dispatch }) => {
+    try {
+      const res = await axios.delete(`http://localhost:5000/auth/posts/${info.id}`, info.data, {
+        headers: { token: localStorage.getItem('token') },
+      });
+      dispatch(getPosts());
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
 const postSlice = createSlice({
   name: 'posts',
   initialState: {

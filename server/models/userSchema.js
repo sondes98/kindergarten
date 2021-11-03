@@ -40,8 +40,12 @@ const UserSchema = new schema(
       required: true,
     },
     profilePic: {
-      type: String,
-      default: "//ssl.gstatic.com/accounts/ui/avatar_2x.png",
+      imageURL: {
+        type: String,
+      },
+      public_id: {
+        type: String,
+      },
     },
     role:{
       type:String,

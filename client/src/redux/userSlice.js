@@ -3,7 +3,7 @@ import axios from "axios";
 
 //CREATE THE THUNK
 export const postNewUser = createAsyncThunk(
-  "user/postNewUser",
+  "users/postNewUser",
   async (info, { rejectWithValue }) => {
     try {
       const res = await axios.post(
@@ -22,7 +22,7 @@ export const postNewUser = createAsyncThunk(
 );
 
 export const login = createAsyncThunk(
-  "user/login", 
+  "users/login", 
   async (data, { rejectWithValue }) => {
     try {
       const res = await axios.post(
@@ -35,13 +35,108 @@ export const login = createAsyncThunk(
     }
   }
 );
+
+
+
+export const getUsers = createAsyncThunk(
+  'users/getUsers',
+  async (info, { rejectWithValue }) => {
+    try {
+      const res = await axios.get('http://localhost:5000/auth/users');
+
+      return res.data
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+export const getSingleUser = createAsyncThunk(
+  'users/getSingleUser',
+  async (id, { rejectWithValue }) => {
+    try {
+      const res = await axios.get(`http://localhost:5000/auth/users/geUser/${id}`);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+export const deleteUser = createAsyncThunk(
+  'users/deleteUser',
+  async (info, { rejectWithValue, dispatch }) => {
+    try {
+      const res = await axios.delete(`http://localhost:5000/auth/users/${info.id}`, info.data, {
+        headers: { token: localStorage.getItem('token') },
+      });
+      dispatch(getUsers());
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+export const addPic = createAsyncThunk(
+  'users/addpic',
+  async (info, { rejectWithValue, dispatch }) => {
+    const formData = new FormData();
+    formData.append('picture', info.file);
+    try {
+      const res = await axios.post('http://localhost:5000/auth/users/update', formData, {
+        headers: { token: localStorage.getItem('token') },
+      });
+      dispatch(getUsers());
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(
+        error.response.data.message
+          ? error.response.data.message
+          : error.response.data.errors.password.msg
+      );
+    }
+  }
+);
+export const updateImage = createAsyncThunk(
+  'users/uploadPic',
+  async (info, { rejectWithValue, dispatch }) => {
+    try {
+      const formData = new FormData();
+      formData.append('profileImg', info.file);
+      const res = await axios.put(`http://localhost:5000/auth/users/uploadPic/${info.id}`, formData, {
+        headers: { token: localStorage.getItem('token') },
+      });
+      dispatch(getUsers());
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+export const updateAccount = createAsyncThunk(
+  'posts/updateInfo',
+  async (info, { rejectWithValue, dispatch }) => {
+    try {
+      const res = await axios.put(`http://localhost:5000/auth/users/updateInfo/${info.id}`, info.data, {
+        headers: { token: localStorage.getItem('token') },
+      });
+      dispatch(getUsers());
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
 //HANDLE ACTIONS IN THE REDUCERS
 
 const userSlice = createSlice({
-  name: 'user',
+  name: 'users',
   initialState: {
-    userInfo: JSON.parse(localStorage.getItem('user')),
+    users:[],
     loading: false,
+    userErrors: null,
+    usersErrors:null,
+    Errors: null,
+    user: {},
+    userInfo: JSON.parse(localStorage.getItem('user')),
     registerErrors: null,
     loginErrors: null,
     token: localStorage.getItem('token'),
@@ -50,7 +145,6 @@ const userSlice = createSlice({
   reducers: {
     logout: (state) => {
       console.log('logout');
-      // localStorage.clear();
       state.isAuth = false;
       state.userInfo = {};
       state.token = null;
@@ -68,7 +162,6 @@ const userSlice = createSlice({
       state.loading = true;
     },
     [postNewUser.fulfilled]: (state, action) => {
-      console.log(action.payload);
       state.userInfo = action.payload.user;
       state.token = action.payload.token;
       state.isAuth = true;
@@ -98,6 +191,42 @@ const userSlice = createSlice({
       state.loginErrors = action.payload;
       state.isAuth = false;
     },
+    [getUsers.pending]: (state) => {
+      state.loading = true;
+    },
+    [getUsers.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.users = action.payload;
+      state.usersErrors = null;
+    },
+    [getUsers.rejected]: (state, action) => {
+      state.loading = false;
+      state.errors = action.payload;
+    },
+    [getSingleUser.pending]: (state) => {
+      state.loading = true;
+    },
+    [getSingleUser.fulfilled]: (state, action) => {
+      state.user = action.payload;
+      state.loading = false;
+      state.usersErrors = null;
+    },
+    [getSingleUser.rejected]: (state, action) => {
+      state.loading = false;
+      state.errors = action.payload;
+    },
+    [addPic.pending]: (state) => {
+      state.loading = true;
+    },
+    [addPic.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.userErrors = null;
+    },
+    [addPic.rejected]: (state, action) => {
+      state.loading = false;
+      state.errors = action.payload;
+    },
+
   },
 });
 

@@ -39,11 +39,7 @@ const Profile = ({ history }) => {
   const handleLike = (postId, post) => {
     dispatch(updatePostLike(postId));
   };
-  const newDate = new Date(
-    post.createdAt
-  ).toLocaleDateString();
-  const time = new Date(post.createdAt).toLocaleTimeString();
-;
+ 
 
   return (
     <>
@@ -63,6 +59,10 @@ const Profile = ({ history }) => {
 
               <h2> {user.userInfo.childsFirstName}</h2>
             </div>
+            <Link to='/update'>
+              <button> update your information</button>
+            </Link>
+
             <div className="Profile-nav">
               <nav className="Pnav">
                 <ul className="Profile-list">
@@ -120,34 +120,45 @@ const Profile = ({ history }) => {
         <div className="allposts">
           <div className="Ppost">
             {post?.posts &&
-              post?.posts.map((post) => (
+              post?.posts.map((post) => {
+                const newDate = new Date(
+                  post.createdAt
+                ).toLocaleDateString();
+                const time = new Date(post.createdAt).toLocaleTimeString();
+                return (
                 <>
-                  <span>{`${newDate} ${time}`}</span>
+                <span>{`${newDate} ${time}`}</span>
 
-                  <h4>{post.owner}</h4>
-                  <Link to={`/post/${post._id}`}>
-                    {" "}
-                    <img src={post.image.imageURL} alt="workshop" width="200" />
-                  </Link>
-                 
-                  {post.likes.length}
-                  <AiFillLike
-                    className="likebtn"
-                    style={
-                      checkLike(post) ? { color: "blue" } : { color: "gray" }
-                    }
-                    onClick={() => handleLike(post._id)}
-                  />
-                  {post.comments.length}
-                  <FaComment
-                    className="likebtn"
-                    style={
-                      checkComment(post) ? { color: "blue" } : { color: "gray" }
-                    }
-                  />
-                  <br />
-                </>
-              ))}
+                <h4>{post.owner.parentsFullName}</h4>
+                <Link to={`/post/${post._id}`}>
+                  {" "}
+                  <img src={post.image.imageURL} alt="workshop" width="200" />
+                </Link>       
+                <div className="comlikeP">
+
+<h1 className="num">{post.likes.length} <AiFillLike
+  className="likebtn"
+  style={
+    checkLike(post) ? { color: "#b3b3f7" } : { color: "#cfcfcfa1" }
+  }
+  onClick={() => handleLike(post._id)}
+/></h1>
+
+<h1 className="num">{post.comments.length}  <FaComment
+  className="likebtn"
+  style={
+    checkComment(post) ? { color: "blue" } : { color: "gray" }
+  }
+/></h1>
+</div>
+                
+                <br />
+              </>)
+              }
+                
+              
+               
+              )}
           </div>
         </div>
       </div>

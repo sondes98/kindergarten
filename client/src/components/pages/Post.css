@@ -4,13 +4,14 @@
     margin:50px auto;
 }
 .likebtn{
+    margin-bottom: -5px;
     width: 43px;
-   size: 31px;
+    size: 31px;
     stroke: currentcolor;
     fill: currentcolor;
     stroke-width: 12px;
-    height: 41px;
-    width: 39px;
+    height: 46px;
+    width: 68px;
 }
 
 .boardPoster {
@@ -125,14 +126,26 @@ textarea:focus
       background-color: #c7828e;
       padding:10px;
   }
-  h3{
+  .comment-date{
+    float: right;
     font-family: 'Josefin Sans';
     font-weight: 200;
     font-size: 17px;
     text-align: end;
+    padding: 11px;
   }
-  p{    font-family: 'Bubblegum Sans';
+  .comment-desc{    font-family: 'Bubblegum Sans';
     font-size: 20px;
     background-color: azure;
     padding: 7px;
     box-shadow: 0px 0px 0px 0.3px #747474;}
+
+    .comlike{
+        display: flex;
+        justify-content: center;
+    }
+    .num{
+        font-family: 'Josefin Sans';
+        color: black;
+        margin-right: 30px;
+    }

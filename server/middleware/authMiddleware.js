@@ -8,7 +8,7 @@ const authMiddleware = async (req, res, next) => {
     req.userId = verifyToken.id;
     next();
   } catch (error) {
-    // res.status(500).json({ message: error });
+    res.status(500).json({ message: error });
   }
 };
 module.exports = authMiddleware;
