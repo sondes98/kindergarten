@@ -42,6 +42,7 @@ const UserSchema = new schema(
     profilePic: {
       imageURL: {
         type: String,
+        default:"https://houstontamilchair.org/wp-content/uploads/2020/07/parent-directory-avatar-2png-avatar-png-256_256.png",
       },
       public_id: {
         type: String,

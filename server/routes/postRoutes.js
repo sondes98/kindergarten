@@ -33,7 +33,7 @@ router.get('/', getPosts);
 router.get('/getpost/:id', getSinglePost);
 router.put('/update/:id', authMiddleware, updatePost);
 router.put('/uploadimg/:id', upload.single('postImg'), authMiddleware, updatePostImage);
-router.delete('/:id', authMiddleware, deletePost);
+router.delete('/:id', deletePost);
 
 
 

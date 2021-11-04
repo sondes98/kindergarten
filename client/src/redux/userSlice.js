@@ -52,9 +52,10 @@ export const getUsers = createAsyncThunk(
 );
 export const getSingleUser = createAsyncThunk(
   'users/getSingleUser',
-  async (id, { rejectWithValue }) => {
+  async (id, { rejectWithValue}) => {
     try {
-      const res = await axios.get(`http://localhost:5000/auth/users/geUser/${id}`);
+      const res = await axios.get(`http://localhost:5000/auth/users/getuser/${id}`);
+    
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response.data.message);
@@ -131,11 +132,11 @@ const userSlice = createSlice({
   name: 'users',
   initialState: {
     users:[],
+    user: {},
     loading: false,
     userErrors: null,
     usersErrors:null,
     Errors: null,
-    user: {},
     userInfo: JSON.parse(localStorage.getItem('user')),
     registerErrors: null,
     loginErrors: null,
@@ -207,9 +208,9 @@ const userSlice = createSlice({
       state.loading = true;
     },
     [getSingleUser.fulfilled]: (state, action) => {
-      state.user = action.payload;
       state.loading = false;
-      state.usersErrors = null;
+      state.user = action.payload;
+      state.userErrors = null;
     },
     [getSingleUser.rejected]: (state, action) => {
       state.loading = false;
@@ -220,7 +221,7 @@ const userSlice = createSlice({
     },
     [addPic.fulfilled]: (state, action) => {
       state.loading = false;
-      state.userErrors = null;
+      state.Errors = null;
     },
     [addPic.rejected]: (state, action) => {
       state.loading = false;

@@ -23,7 +23,7 @@
 }
 .register-container {
     /* margin-top: 171px; */
-    width: 100%;
+    width: 500px;
     /* padding: 93px 0px 137px 6px; */
     float: left;
     clear: both;
@@ -69,7 +69,7 @@
 }
 input{
     background-color: #ffffff40;
-    font-size: 28px;
+    font-size: 20px;
     font-family: 'Josefin Sans';
     letter-spacing: 6px;
     cursor: text;
@@ -81,7 +81,7 @@ input{
 }
 select{
     background-color: #ffffff40;
-    font-size: 28px;
+    font-size: 20px;
     font-family: 'Josefin Sans';
     letter-spacing: 6px;
     cursor: text;
@@ -92,7 +92,7 @@ select{
     border-color: #f0f8ff21;
 }
 .form-control{
-    height: 35px;
+    height: 25px;
 }
 
 

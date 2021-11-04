@@ -43,7 +43,8 @@ html{
     padding-top: 46px;
 }
 .profilepic{
-    width: 200px;
+    width: 150px;
+    height: 100px;
     border-radius: 100%;
     display: block;
     margin: 0 auto;
@@ -150,7 +151,7 @@ input:focus
 }
 .Profile-list{
     display: flex;
-    margin-top: 78px;
+    margin-top: 15px;
     justify-content: space-around;
 }
 .btn-file {

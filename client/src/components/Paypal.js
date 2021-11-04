@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {Link} from 'react-router-dom'
+import "./Paypal.css"
 
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
@@ -22,8 +23,9 @@ function Paypal() {
   };
 
   return (
-    <>
+    <div className="paypal">
       <PayPalButton
+    
         createOrder={(data, actions) => createOrder(data, actions)}
         onApprove={(data, actions) => onApprove(data, actions)}
       />
@@ -33,7 +35,7 @@ function Paypal() {
           continue to your account <button> here </button>{" "}
         </span>
       </Link>
-    </>
+    </div>
   );
 }
 

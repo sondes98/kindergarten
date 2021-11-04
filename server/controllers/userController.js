@@ -2,6 +2,8 @@ const User = require("../models/userSchema");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
+const cloudinary = require("../helpers/cloudinary");
+
 
 const registerController = async (req, res) => {
   try {
@@ -115,9 +117,9 @@ const deleteAccount = async (req, res) => {
 const addPic = async (req, res) => {
   try {
     const imageInfo = await cloudinary.uploader.upload(req.file.path);
-    const imageInfo = await cloudinary.uploader.upload(req.file.path);
+
     const Pic = await User.create({
-      profilePic: { imageURL: imageInfo.url, public_id: imageInfo.public_id },
+      profilePic:{imageURL:imageInfo.url, public_id: imageInfo.public_id },
     });
     res.status(200).json(Pic)
   } catch (error) {
@@ -128,12 +130,15 @@ const updateImage = async (req, res) => {
   try {
     const imageInfo = await cloudinary.uploader.upload(req.file.path);
     const existUser = await User.findById(req.params.id);
-    cloudinary.uploader.destroy(existUser.image.public_id);
-    const updatedPic = await User.findByIdAndUpdate(req.params.id, {
+    console.log(imageInfo);
+
+    cloudinary.uploader.destroy(existUser.profilePic.public_id);
+    const image = await User.findByIdAndUpdate(req.params.id, {
       profilePic: { imageURL: imageInfo.url, public_id: imageInfo.public_id },
     });
-    res.json(updatedPic);
+    res.json(image);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: error });
   }
 };

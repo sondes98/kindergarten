@@ -1,5 +1,4 @@
 const express = require("express");
-const router = express.Router();
 const { body } = require("express-validator");
 require("dotenv").config();
 const {
@@ -39,8 +38,8 @@ router.post(
   }),
   registerController
 );
-router.post('/update', upload.single('picture'), authMiddleware, addPic);
-router.put('/uploadPic/:id', upload.single('profileImg'), authMiddleware, updateImage);
+router.post('/add', upload.single('picture'), addPic);
+router.put('/uploadPic/:id', upload.single('profileImg'), updateImage);
 router.post("/login", loginController);
 router.put("/updateInfo/:id", updateAccount);
 router.get('/', getUsers);

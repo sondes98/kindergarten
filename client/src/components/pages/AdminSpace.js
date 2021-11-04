@@ -11,15 +11,15 @@ const AdminSpace = ({ history }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const post = useSelector((state) => state.post);
-  console.log(user);
   useEffect(() => {
-    if (!user.role === "admin".isAuth) {
-      history.push("/login");
+    if (!user.role==="admin") {
+      history.push("/")
+      alert("your are not authorized");
     } else {
       dispatch(getUsers());
       dispatch(getPosts());
     }
-  }, [user.role === "admin".isAuth]);
+  }, [(user.role==="admin")]);
   const handleRemoveSubmit = (e, userId) => {
     e.preventDefault();
     dispatch(deleteUser({ id: userId }));

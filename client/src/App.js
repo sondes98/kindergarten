@@ -24,7 +24,7 @@ function App() {
         <Route exact path="/admin" component={AdminSpace}/>
         <Route exact path="/login" component={LoginP} />
         <Route exact path="/register" component={RegisterP} />
-        <Route exact path="/update" component={Updates}/>
+        {/* <Route exact path="/user/:id" component={Updates}/> */}
         <Route exact path="/events" component={Events} />
         <Route exact path="/ourstaffs" component={Staffs} />
         <Route exact path="/contact-us" component={Contact} />

@@ -16,13 +16,13 @@ const Navbar = () => {
     <div className="main-nav">
       <div className="top-nav">
         <div className="left-side">
-        <Link to="/"  >
-        <img src={logo} alt="logo" className="logo" width="750px" />
-      </Link>
-      
+          <Link to="/">
+            <img src={logo} alt="logo" className="logo" width="750px" />
+          </Link>
         </div>
-      <div className="right-side">
-      {user.isAuth ? (
+        <div className="right-side">
+         
+          {user.isAuth ? (
             <div className="profile-nav">
               <li className="auth">
                 <Link to="/login" onClick={() => dispatch(logout())}>
@@ -33,53 +33,41 @@ const Navbar = () => {
                 <Link to="/profile">profile</Link>
                 <h5>{user.userInfo.parentsFullName}</h5>
               </li>
+              <li className="auth">
+                <Link to="/admin">admin</Link>
+              </li>
             </div>
           ) : (
             <>
               <li className="auth">
-                <Link to="/login" >
-                  SIGN IN
-                </Link>
+                <Link to="/login">SIGN IN</Link>
               </li>
               <li className="auth">
-                <Link to="/register" >
-                  INSCRIPTION
-                </Link>
+                <Link to="/register">INSCRIPTION</Link>
               </li>
+            
             </>
           )}
+        </div>
       </div>
-     
-      </div>
-     
+
       <nav className="main-navbar link1">
         <ul className="navbar">
           <li className="nav-links">
-            <Link to="/">
-              HOME{" "}
-            </Link>
+            <Link to="/">HOME </Link>
           </li>
           <li className="nav-links link2">
-            <Link to="/about-us" >
-              ABOUT US
-            </Link>
+            <Link to="/about-us">ABOUT US</Link>
           </li>
           <li className="nav-links link3">
-            <Link to="/ourstaffs" >
-              OUR STAFFS
-            </Link>
+            <Link to="/ourstaffs">OUR STAFFS</Link>
           </li>
           <li className="nav-links link4">
-            <Link to="/events" >
-              EVENTS
-            </Link>
+            <Link to="/events">EVENTS</Link>
           </li>
           <li className="nav-links link5">
-            <Link to="/contact-us">
-              CONTACT US
-            </Link>
+            <Link to="/contact-us">CONTACT US</Link>
           </li>
-
         </ul>
       </nav>
     </div>

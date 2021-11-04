@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../redux/userSlice";
-import { addNewPost, getPosts, updatePostLike,   updatePostComment,
+import {
+  addNewPost,
+  getPosts,
+  updatePostLike,
+  updatePostComment,
 } from "../../redux/postSlice";
+import { updateAccount, updateImage } from "../../redux/userSlice";
+
+import { getUsers } from "../../redux/userSlice";
 import "./Profile.css";
 import { Link } from "react-router-dom";
 import { AiFillLike, AiFillEdit } from "react-icons/ai";
@@ -17,9 +24,11 @@ const Profile = ({ history }) => {
       history.push("/login");
     } else {
       dispatch(getPosts());
+      dispatch(getUsers());
     }
   }, [user.isAuth]);
   const [postInfo, setPostInfo] = useState({});
+  const [updatedInfo, setUpdatedInfo] = useState({});
   const [file, setFile] = useState({});
   const handleChange = (e) => {
     setPostInfo({ ...postInfo, [e.target.name]: e.target.value });
@@ -29,17 +38,22 @@ const Profile = ({ history }) => {
     dispatch(addNewPost({ postInfo, file }));
   };
 
-
   const checkLike = (post) => {
-    return post.likes.some((likeId) => likeId == user.userInfo._id);
+    return post.likes.some((likeId) => likeId === user.userInfo._id);
   };
   const checkComment = (post) => {
-    return post.comments.some((commentId) => commentId == user.userInfo._id);
+    return post.comments.some((commentId) => commentId === user.userInfo._id);
   };
   const handleLike = (postId, post) => {
     dispatch(updatePostLike(postId));
   };
- 
+  const handleUpdateImage = (e, userId) => {
+    dispatch(updateImage({ id: userId, file: e.target.files[0] }));
+  };
+  const handleUpdateSubmit = (e, userId) => {
+    e.preventDefault();
+    dispatch(updateAccount({ id: userId, data: updatedInfo }));
+  };
 
   return (
     <>
@@ -47,11 +61,17 @@ const Profile = ({ history }) => {
         <div className="user-side">
           <div className="user-info sideprofile">
             <div className="profilePic">
-              <img
-                src="https://houstontamilchair.org/wp-content/uploads/2020/07/parent-directory-avatar-2png-avatar-png-256_256.png"
-                alt="profilepic"
-                className="profilepic"
-              />
+              <img className="profilepic" src={user.userInfo.profilePic.imageURL} alt="" />
+              {/* <input
+          className="title-P"
+          type="file"
+          name="image"
+          onChange={(e) => handleUpdateImage(e, user._id)}
+        />
+        <button type="submit" onClick={(e) => handleUpdateSubmit(e, user._id)}>
+          save changes
+        </button> */}
+       
             </div>
             <div className="userInfo">
               <h1>{user.userInfo.parentsFullName}</h1>
@@ -59,9 +79,9 @@ const Profile = ({ history }) => {
 
               <h2> {user.userInfo.childsFirstName}</h2>
             </div>
-            <Link to='/update'>
+            {/* <Link to={`/user/${user._id}`}>
               <button> update your information</button>
-            </Link>
+            </Link> */}
 
             <div className="Profile-nav">
               <nav className="Pnav">
@@ -79,7 +99,19 @@ const Profile = ({ history }) => {
             </div>
           </div>
         </div>
+        
+
         <div className="posts-side">
+          <div>
+          {(user.role === "admin") ? (
+          <Link to="/admin">
+            <button>Admin Space</button>
+          </Link>
+        ) : (
+          <></>
+        )}
+          </div>
+        
           <form className="cardP">
             <h1>Share with us your child experience here ...</h1>
 
@@ -121,44 +153,52 @@ const Profile = ({ history }) => {
           <div className="Ppost">
             {post?.posts &&
               post?.posts.map((post) => {
-                const newDate = new Date(
-                  post.createdAt
-                ).toLocaleDateString();
+                const newDate = new Date(post.createdAt).toLocaleDateString();
                 const time = new Date(post.createdAt).toLocaleTimeString();
                 return (
-                <>
-                <span>{`${newDate} ${time}`}</span>
+                  <>
+                    <span>{`${newDate} ${time}`}</span>
 
-                <h4>{post.owner.parentsFullName}</h4>
-                <Link to={`/post/${post._id}`}>
-                  {" "}
-                  <img src={post.image.imageURL} alt="workshop" width="200" />
-                </Link>       
-                <div className="comlikeP">
+                    <h4>{post.owner.parentsFullName}</h4>
+                    <Link to={`/post/${post._id}`}>
+                      {" "}
+                      <img
+                        src={post.image.imageURL}
+                        alt="workshop"
+                        width="200"
+                      />
+                    </Link>
+                    <div className="comlikeP">
+                      <h1 className="num">
+                        {post.likes.length}{" "}
+                        <AiFillLike
+                          className="likebtn"
+                          style={
+                            checkLike(post)
+                              ? { color: "#b3b3f7" }
+                              : { color: "#cfcfcfa1" }
+                          }
+                          onClick={() => handleLike(post._id)}
+                        />
+                      </h1>
 
-<h1 className="num">{post.likes.length} <AiFillLike
-  className="likebtn"
-  style={
-    checkLike(post) ? { color: "#b3b3f7" } : { color: "#cfcfcfa1" }
-  }
-  onClick={() => handleLike(post._id)}
-/></h1>
+                      <h1 className="num">
+                        {post.comments.length}{" "}
+                        <FaComment
+                          className="likebtn"
+                          style={
+                            checkComment(post)
+                              ? { color: "blue" }
+                              : { color: "gray" }
+                          }
+                        />
+                      </h1>
+                    </div>
 
-<h1 className="num">{post.comments.length}  <FaComment
-  className="likebtn"
-  style={
-    checkComment(post) ? { color: "blue" } : { color: "gray" }
-  }
-/></h1>
-</div>
-                
-                <br />
-              </>)
-              }
-                
-              
-               
-              )}
+                    <br />
+                  </>
+                );
+              })}
           </div>
         </div>
       </div>
