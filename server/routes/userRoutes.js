@@ -38,7 +38,6 @@ router.post(
   }),
   registerController
 );
-router.post('/add', upload.single('picture'), addPic);
 router.put('/uploadPic/:id', upload.single('profileImg'), updateImage);
 router.post("/login", loginController);
 router.put("/updateInfo/:id", updateAccount);

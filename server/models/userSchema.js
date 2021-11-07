@@ -2,9 +2,12 @@ const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 
 const Genders = Object.freeze({
-  Male: "male",
-  Female: "female",
-  Other: "other",
+  Maman: "male",
+  Papa: "female",
+});
+const Gender = Object.freeze({
+  Girl: "male",
+  Boy: "female",
 });
 
 const UserSchema = new schema(
@@ -22,9 +25,13 @@ const UserSchema = new schema(
       required: true,
       trim: true,
     },
-    gender: {
+    Pgender: {
       type: String,
       enum: Object.values(Genders),
+    },
+    Cgender: {
+      type: String,
+      enum: Object.values(Gender),
     },
     parentsFullName: {
       type: String,
@@ -34,6 +41,17 @@ const UserSchema = new schema(
       type: String,
       required: true,
       unique: true,
+    },
+    address: {
+      city:{
+        type: String,
+      },
+      Street:{
+        type: String,
+      },
+      code: {
+        type: Number,
+      },
     },
     password: {
       type: String,
@@ -52,12 +70,15 @@ const UserSchema = new schema(
       type:String,
       default:'user', 
       enum:['user','admin']
+    },
+    phone:{
+      type: Number,
     }
   },
   { timestamps: true }
 );
 Object.assign(UserSchema.statics, {
-  Genders,
+  Genders, Gender,
 });
 
 module.exports = mongoose.model("user", UserSchema);

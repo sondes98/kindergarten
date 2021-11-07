@@ -8,12 +8,14 @@ import {
   updatePostComment,
 } from "../../redux/postSlice";
 import { updateAccount, updateImage } from "../../redux/userSlice";
-
 import { getUsers } from "../../redux/userSlice";
 import "./Profile.css";
 import { Link } from "react-router-dom";
 import { AiFillLike, AiFillEdit } from "react-icons/ai";
-import { FaComment } from "react-icons/fa";
+import { FaComment, FaSchool } from "react-icons/fa";
+import {IoIosLogOut} from "react-icons/io"
+
+
 const Profile = ({ history }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
@@ -57,61 +59,45 @@ const Profile = ({ history }) => {
 
   return (
     <>
-      <div className="profile">
-        <div className="user-side">
-          <div className="user-info sideprofile">
-            <div className="profilePic">
-              <img className="profilepic" src={user.userInfo.profilePic.imageURL} alt="" />
-              {/* <input
-          className="title-P"
-          type="file"
-          name="image"
-          onChange={(e) => handleUpdateImage(e, user._id)}
-        />
-        <button type="submit" onClick={(e) => handleUpdateSubmit(e, user._id)}>
-          save changes
-        </button> */}
        
-            </div>
-            <div className="userInfo">
-              <h1>{user.userInfo.parentsFullName}</h1>
-              <h3> Parent of the Teddy </h3>
-
-              <h2> {user.userInfo.childsFirstName}</h2>
-            </div>
-            {/* <Link to={`/user/${user._id}`}>
-              <button> update your information</button>
-            </Link> */}
-
-            <div className="Profile-nav">
-              <nav className="Pnav">
-                <ul className="Profile-list">
-                  <li className="Profile-link">
-                    <Link to="/">Home </Link>
-                  </li>
-                  <li className="Profile-link">
-                    <Link to="/login" onClick={() => dispatch(logout())}>
-                      Log out{" "}
-                    </Link>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </div>
         
+          <div className="Profile-nav">
+          <nav className="Pnav">
+            <ul className="Profile-list">
+              <li className="Profile-link">
+                <Link to="/"> <FaSchool/> Home </Link>
+              </li>
+              
+            </ul>
+              <Link to={`/user/${user._id}`} className="profilePic">
+                <img
+                  className="Ppic"
+                  src={user.userInfo.profilePic.imageURL}
+                  alt=""
+                />
+                <h1>{user.userInfo.parentsFullName}</h1>
+              </Link>
+              <li className="Profile-link">
+                <Link to="/login" onClick={() => dispatch(logout())}>
+                  Log out <IoIosLogOut/>{" "}
+                </Link>
+              </li>
+          </nav>
+         
+        </div>
+            
 
         <div className="posts-side">
           <div>
-          {(user.role === "admin") ? (
-          <Link to="/admin">
-            <button>Admin Space</button>
-          </Link>
-        ) : (
-          <></>
-        )}
+            {(user.role === "admin") ? (
+              <Link to="/admin">
+                <button>Admin Space</button>
+              </Link>
+            ) : (
+              <></>
+            )}
           </div>
-        
+
           <form className="cardP">
             <h1>Share with us your child experience here ...</h1>
 
@@ -201,7 +187,6 @@ const Profile = ({ history }) => {
               })}
           </div>
         </div>
-      </div>
     </>
   );
 };

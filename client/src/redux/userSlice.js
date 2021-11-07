@@ -82,7 +82,7 @@ export const addPic = createAsyncThunk(
     const formData = new FormData();
     formData.append('picture', info.file);
     try {
-      const res = await axios.post('http://localhost:5000/auth/users/update', formData, {
+      const res = await axios.post('http://localhost:5000/auth/users/register', formData, {
         headers: { token: localStorage.getItem('token') },
       });
       dispatch(getUsers());

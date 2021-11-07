@@ -7,27 +7,36 @@ const cloudinary = require("../helpers/cloudinary");
 
 const registerController = async (req, res) => {
   try {
+    
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.status(400).json({ errors: errors.mapped() });
     }
-    const {parentsFullName,
+    const {
       email,
-      password,
-      dateOfBirth,
+      parentsFullName,
+      childsLastName,
       childsFirstName,
-      childsLastName, } = req.body;
+      dateOfBirth,
+      phone,
+      password,
+
+    }=req.body;
+    
     const existUser = await User.findOne({ email });
     if (existUser) {
       res.status(400).json({ message: 'user already exist' });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = await User.create({  email,
+    const newUser = await User.create({
+      email,  
       parentsFullName,
       childsLastName,
       childsFirstName,
       dateOfBirth,
-      password: hashedPassword,});
+      phone,
+      password:hashedPassword,
+    });
     const token = jwt.sign(
       { email: newUser.email, id: newUser._id },
       process.env.SECRET_KEY,
@@ -114,18 +123,7 @@ const deleteAccount = async (req, res) => {
     res.status(500).json({ message: error });
   }
 };
-const addPic = async (req, res) => {
-  try {
-    const imageInfo = await cloudinary.uploader.upload(req.file.path);
 
-    const Pic = await User.create({
-      profilePic:{imageURL:imageInfo.url, public_id: imageInfo.public_id },
-    });
-    res.status(200).json(Pic)
-  } catch (error) {
-    res.status(500).json({ message: error });
-  }
-};
 const updateImage = async (req, res) => {
   try {
     const imageInfo = await cloudinary.uploader.upload(req.file.path);
@@ -145,7 +143,6 @@ const updateImage = async (req, res) => {
 
 module.exports = {
   updateImage,
-  addPic,
   registerController,
   loginController,
   updateAccount,

@@ -1,8 +1,8 @@
-html{
+/* html{
     background-color: #F0F3F3;;
     background-image: url(https://kidslifedev.wpengine.com/wp-content/uploads/2020/03/cloud-bg1.png);
 
-}
+} */
 .sectionl {
     height: 100px;
     background-color: #008C99;
@@ -32,23 +32,30 @@ html{
 }
 
 
-.sideprofile{
-    background-color: rgb(255 255 255 / 0%);
-    height: 844px;
-    display: flex;
-    width: 260px;
-    flex-direction: column;
-    position: fixed;
-    box-shadow: 1px 1px 7px 1px #7474742b;
-    padding-top: 46px;
+.Pnav{
+background-color: rgb(219 150 150 / 50%);
+height: 72px;
+display: flex;
+width: 100%;
+position: fixed;
+box-shadow: 1px 1px 7px 1px #7474742b;
+top:0;
 }
-.profilepic{
-    width: 150px;
-    height: 100px;
+.Ppic {
+    width: 62px;
+    height: 60px;
     border-radius: 100%;
-    display: block;
-    margin: 0 auto;
+    /* display: block; */
+    /* margin: 0 auto; */
+    padding: 10px;
 }
+.profilePic {
+    justify-content:center;
+    margin: -5px;
+        display: flex;
+        width:100%;
+    }
+
 
 .userInfo h1{
     color: black;
@@ -84,16 +91,20 @@ html{
     position: relative;
     flex-direction: column;
 }
+.Pposts{
+    display: flex;
+    flex-direction: column;
+}
 
 .posts-side{
-    margin-top: 52px;
-        background-image: url(https://kidslifedev.wpengine.com/wp-content/uploads/layerslider/KidsLife-Slider/black-board.jpg);
-        background-color: #ffffff38;
-        margin-left: 520px;
-        display: flex;
-        position: absolute;
-        width: 520px;
-        border-radius: 30px;
+    margin-top: 119px;
+    background-image: url(https://kidslifedev.wpengine.com/wp-content/uploads/layerslider/KidsLife-Slider/black-board.jpg);
+    background-color: #ffffff38;
+    margin-left: 50px;
+    display: flex;
+    width: 520px;
+    border-radius: 10px;
+    height:400px;
 }
 
 .title-P{
@@ -127,17 +138,11 @@ input:focus
     outline: none;
 }
 
-.Profile-nav{
-    text-decoration: none;
-    display: block;
-    margin: 67px auto;
-}
 
 .Profile-link{
-    padding: 15px;
-    list-style: none;
-    text-decoration: none;
-    margin-top: 20px;
+    width: 220px;
+        list-style: none;
+        text-decoration: none;
 
 }
 
@@ -149,11 +154,7 @@ input:focus
     font-size: 23px;
     letter-spacing: 2px;
 }
-.Profile-list{
-    display: flex;
-    margin-top: 15px;
-    justify-content: space-around;
-}
+
 .btn-file {
     position: relative;
     overflow: hidden;
@@ -188,10 +189,11 @@ input:focus
   }
 
   .allposts{
-    margin-left: 514px;
     background-color: #ffffff36;
     width: 520px;
-    margin-top: 364px;
+    margin-top: 128px;
+    display: flex;
+    justify-content: space-evently;
   }
 .cardP h1{
     font-family: 'Bubblegum Sans';

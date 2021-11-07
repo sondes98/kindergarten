@@ -4,8 +4,7 @@ import { postNewUser } from "../../redux/userSlice";
 import "./Register.css";
 import { Link } from "react-router-dom";
 
-
-const RegisterP = ({history}) => {
+const RegisterP = ({ history }) => {
   const dispatch = useDispatch();
   const [userInput, setUserInput] = useState({});
   const user = useSelector((state) => state.user);
@@ -23,13 +22,14 @@ const RegisterP = ({history}) => {
     e.preventDefault();
     dispatch(postNewUser(userInput));
   };
+
   return (
     <div className="register-container">
-       <li className="Profile-link">
-                    <Link to="/">Home </Link>
-                  </li> 
-      <form className="form">
-        {/* <label className="form-g">Child's First Name</label> */}
+      <li className="Profile-link">
+        <Link to="/">Home </Link>
+      </li>
+      <form className="form child-info">
+        <h2>Child's Information</h2>
         <input
           type="text"
           className="form-control"
@@ -37,7 +37,6 @@ const RegisterP = ({history}) => {
           onChange={handleChange}
           placeholder="Enter Child's First Name..."
         />
-        {/* <label className="form-g">Child's Last Name</label> */}
         <input
           type="text"
           className="form-control"
@@ -45,14 +44,46 @@ const RegisterP = ({history}) => {
           onChange={handleChange}
           placeholder="Enter your child's Last Name..."
         />
-        {/* <label className="form-g"> Select your child's gender</label> */}
         <select
           className="form-control"
           name="gender"
           onChange={handleChange}
           placeholder="Select your gender..."
         >
-           <option value="Option" name="gender" onChange={handleChange}>
+          <option value="Option" name="gender" onChange={handleChange}>
+            Option
+          </option>
+          <option value="Boy" name="gender" onChange={handleChange}>
+            Boy
+          </option>
+          <option value="Girl" name="gender" onChange={handleChange}>
+            Girl
+          </option>
+        </select>
+        <input
+          type="date"
+          className="form-control"
+          name="dateOfBirth"
+          onChange={handleChange}
+          placeholder="Enter your child birth date..."
+        ></input>
+      </form>
+      <form className=" form parent-info">
+        <h2>Parent's Information</h2>
+        <input
+          type="text"
+          className="form-control"
+          name="parentsFullName"
+          onChange={handleChange}
+          placeholder="Enter your full name..."
+        />
+        <select
+          className="form-control"
+          name="gender"
+          onChange={handleChange}
+          placeholder="Select your gender..."
+        >
+          <option value="Option" name="gender" onChange={handleChange}>
             Option
           </option>
           <option value="male" name="gender" onChange={handleChange}>
@@ -61,28 +92,21 @@ const RegisterP = ({history}) => {
           <option value="female" name="gender" onChange={handleChange}>
             Female
           </option>
-          <option value="other" name="gender" onChange={handleChange}>
-            other
-          </option>
         </select>
-        {/* <label className="form-g">Chid's Birth Date</label> */}
-        <input
-          type="date"
-          className="form-control"
-          name="dateOfBirth"
-          onChange={handleChange}
-          placeholder="Enter your child birth date..."
-        ></input>
-        {/* <label className="form-g">Parent's Full Name</label> */}
         <input
           type="text"
           className="form-control"
-          name="parentsFullName"
+          name="phone"
           onChange={handleChange}
-          placeholder="Enter your full name..."
+          placeholder="Enter your phone number..."
         />
-
-        {/* <label className="form-g">Email</label> */}
+        <input
+          type="text"
+          className="form-control"
+          name="address"
+          onChange={handleChange}
+          placeholder="Enter your adress..."
+        />
         <input
           type="text"
           className="form-control"
@@ -90,8 +114,6 @@ const RegisterP = ({history}) => {
           onChange={handleChange}
           placeholder="Enter your email address..."
         />
-
-        {/* <label className="form-g">Password</label> */}
         <input
           type="password"
           className="form-control"
@@ -103,10 +125,8 @@ const RegisterP = ({history}) => {
         <button className="btn1" type="submit" onClick={handleSubmit}>
           Register
         </button>
-        {user && user.registerErrors && <p>{user.registerErrors} </p>}
-
+        {user && user.registerErrors && <p>{user.registerErrors}</p>}
       </form>
-
     </div>
   );
 };

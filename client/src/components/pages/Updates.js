@@ -14,7 +14,7 @@ const Updates = ({ match, history }) => {
   const dispatch = useDispatch();
   const [updatedInfo, setUpdatedInfo] = useState({});
   useEffect(() => {
-    dispatch(getSingleUser(user.userInfo._id));
+    dispatch(getSingleUser(match.params._id));
   }, []);
   const { user, loading } = useSelector((state) => state.user);
 

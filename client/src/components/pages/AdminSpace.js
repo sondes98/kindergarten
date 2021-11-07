@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUsers, deleteUser } from "../../redux/userSlice";
 import { getPosts, deletePost } from "../../redux/postSlice";
 import { Link } from "react-router-dom";
-import { FaBan } from 'react-icons/fa';
+import { FaBan } from "react-icons/fa";
 
 import "./AdminSpace.css";
 
@@ -12,14 +12,14 @@ const AdminSpace = ({ history }) => {
   const user = useSelector((state) => state.user);
   const post = useSelector((state) => state.post);
   useEffect(() => {
-    if (!user.role==="admin") {
-      history.push("/")
+    if (!user.role === "admin") {
+      history.push("/");
       alert("your are not authorized");
     } else {
       dispatch(getUsers());
       dispatch(getPosts());
     }
-  }, [(user.role==="admin")]);
+  }, [user.role === "admin"]);
   const handleRemoveSubmit = (e, userId) => {
     e.preventDefault();
     dispatch(deleteUser({ id: userId }));
@@ -119,7 +119,7 @@ const AdminSpace = ({ history }) => {
                             tabindex="0"
                             type="submit"
                             onClick={(e) => handleRemoveSubmit(e, user._id)}
-                            style={{color:"red"}}
+                            style={{ color: "red" }}
                           />
                         </div>
                       </td>
@@ -191,7 +191,6 @@ const AdminSpace = ({ history }) => {
             <tbody className="rt-tbody">
               {post?.posts &&
                 post?.posts.map((post) => {
-                 
                   return (
                     <tr role="row" className="rt-tr">
                       <td role="cell" className="rt-td">
@@ -208,7 +207,12 @@ const AdminSpace = ({ history }) => {
                       </td>
                       <td role="cell" className="rt-td">
                         {" "}
-                        <img src={post.image.imageURL} alt="kindergarten" width="50" />                      </td>
+                        <img
+                          src={post.image.imageURL}
+                          alt="kindergarten"
+                          width="50"
+                        />{" "}
+                      </td>
                       <td role="cell" className="rt-td">
                         <div className="actions-right">
                           <FaBan
@@ -216,7 +220,7 @@ const AdminSpace = ({ history }) => {
                             tabindex="0"
                             type="submit"
                             onClick={(e) => handleDeleteSubmit(e, post._id)}
-                            style={{color:"red"}}
+                            style={{ color: "red" }}
                           />
                         </div>
                       </td>
