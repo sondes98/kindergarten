@@ -1,4 +1,4 @@
 /node_modules
-/.env
-/paypal.txt
-/helpers
+*.env
+*.txt
+//helpers
