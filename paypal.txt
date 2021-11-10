@@ -1,0 +1,9 @@
+business acc
+email:teddybear@business.example.com
+password:6J?a@x_'
+
+parent account 
+email:jhon123@personal.example.com
+password: lce9KE+'
+
+

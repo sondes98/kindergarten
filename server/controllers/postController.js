@@ -4,6 +4,7 @@ const Post = require("../models/postSchema");
 /**
  *@param<string>
  */
+
 const addPost = async (req, res) => {
   try {
     const newBody = JSON.parse(req.body.info);
@@ -22,7 +23,7 @@ const addPost = async (req, res) => {
 
 const getPosts = async (req, res) => {
   try {
-    const posts = await Post.find({});
+    const posts = await Post.find({}).populate('')
     res.json(posts);
   } catch (error) {
     res.status(500).json({ message: error });
@@ -31,9 +32,7 @@ const getPosts = async (req, res) => {
 
 const getSinglePost = async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
-    // .populate('owner', '-password -__v')
-    // .populate('comments.commentOwner', '-password -__v');
+    const post = await Post.findById(req.params.id)
     res.status(200).json(post);
   } catch (error) {
     res.status(500).json({ message: error });

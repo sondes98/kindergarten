@@ -14,6 +14,8 @@ const registerController = async (req, res) => {
     }
     const {
       email,
+      Cgender,
+      Pgender,
       parentsFullName,
       childsLastName,
       childsFirstName,
@@ -29,7 +31,9 @@ const registerController = async (req, res) => {
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = await User.create({
-      email,  
+      email, 
+      Cgender,
+      Pgender, 
       parentsFullName,
       childsLastName,
       childsFirstName,
@@ -77,6 +81,10 @@ const loginController = async (req, res) => {
 const updateAccount = async (req, res) => {
   try {
     const {
+      phone,
+      email,
+      Cgender,
+      Pgender,
       parentsFullName,
       childsLastName,
       childsFirstName,
@@ -84,13 +92,17 @@ const updateAccount = async (req, res) => {
       password,
     } = req.body;
     const updatedUser = await User.findByIdAndUpdate(req.params.id, {
+      phone,
+      email,
+      Cgender,
+      Pgender,
       parentsFullName,
       childsLastName,
       childsFirstName,
       dateOfBirth,
       password,
     });
-    res.json(updatedUser);
+    res.json({updatedUser});
   } catch (error) {
     res.status(500).json({ message: error });
   }
@@ -108,12 +120,12 @@ const getUsers = async (req, res) => {
 const getSingleUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
-    // .populate('owner', '-password -__v')
-    // .populate('comments.commentOwner', '-password -__v');
     res.status(200).json(user);
   } catch (error) {
+    console.log(error)
     res.status(500).json({ message: error });
   }
+
 };
 const deleteAccount = async (req, res) => {
   try {
@@ -129,7 +141,6 @@ const updateImage = async (req, res) => {
     const imageInfo = await cloudinary.uploader.upload(req.file.path);
     const existUser = await User.findById(req.params.id);
     console.log(imageInfo);
-
     cloudinary.uploader.destroy(existUser.profilePic.public_id);
     const image = await User.findByIdAndUpdate(req.params.id, {
       profilePic: { imageURL: imageInfo.url, public_id: imageInfo.public_id },

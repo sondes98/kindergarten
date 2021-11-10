@@ -34,7 +34,6 @@
 .form-l{
     background-image: url(../images/footer_bg.png);
     background-color: #ffffff38;
-    margin-left: 420px;
     margin-top: 100px;
     border-radius: 10px;
     width: 603px;
@@ -42,6 +41,8 @@
     flex-direction: column;
     padding: 20px;
     margin-bottom: 100px;
+    height: 209px;
+    
 }
 .form-g{
     letter-spacing: 2px;
@@ -74,6 +75,26 @@ font-family: 'Bubblegum Sans';
     border: 2px solid var(--primary);
     
   }
+
+
+  .login-container{
+    background-color: #008C99;
+}
+.LoginLinks{
+    width: 253px;
+    list-style: none;
+    text-decoration: none;
+    padding: 50px;
+    margin: 0 auto;
+    text-decoration: none;
+    color: #ffff;
+    font-size: 39px;
+    font-family: 'Bubblegum Sans';
+}
+.linksL{
+    display: flex;
+    justify-content: center;
+}
 
 
   

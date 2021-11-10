@@ -4,92 +4,99 @@ import {
   getUsers,
   addPic,
   updateImage,
-  getSingleUser,
+  getUser,
   updateAccount,
 } from "../../redux/userSlice";
 import "./Post.css";
 import { AiFillEdit } from "react-icons/ai";
+import "./Update.css"
+import {Link} from "react-router-dom"
 
 const Updates = ({ match, history }) => {
   const dispatch = useDispatch();
-  const [updatedInfo, setUpdatedInfo] = useState({});
+  const user = useSelector((state) => state.user);
+  const [userInfo, setUserInfo] =useState({});
+  const [updatedAcc, setUpdatedAcc] = useState({});
   useEffect(() => {
-    dispatch(getSingleUser(match.params._id));
-  }, []);
-  const { user, loading } = useSelector((state) => state.user);
-
+    dispatch(getUser(user.userInfo._id));
+  }, [dispatch, user.userInfo._id]);
+  const handleChange = (e) => {
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+  };
   const handleUpdate = (e) => {
-    setUpdatedInfo({ ...updatedInfo, [e.target.name]: e.target.value });
+    e.preventDefault();
+    setUpdatedAcc({ ...updatedAcc, [e.target.name]: e.target.value });
   };
   const handleUpdateSubmit = (e, userId) => {
     e.preventDefault();
-    dispatch(updateAccount({ id: userId, data: updatedInfo }));
+    dispatch(updateAccount({ _id: userId, data: updatedAcc }));
   };
   const handleUpdateImage = (e, userId) => {
-    dispatch(updateImage({ id: userId, file: e.target.files[0] }));
+    console.log(userId)
+    dispatch(updateImage({ _id: userId, file: e.target.files[0] }));
   };
-  const handleAddImage = (e, userId) => {
-    dispatch(addPic({ id: userId, file: e.target.files[0] }));
-  };
+
   return (
     <>
       <div className="Editor">
         <input
           className="title-P"
           type="file"
-          name="image"
-          onChange={(e) => handleUpdateImage(e, user._id)}
+          name="profilePic"
+          onChange={(e) => handleUpdateImage(e, user.userInfo._id)}
         />
         <input
           className="title-T"
           type="text"
-          name="title"
-          placeholder={user.parentsFullName}
+          name="parentsFullName"
+          defaultValue={user.userInfo.parentsFullName}
+          onChange={handleChange}
         />
         <AiFillEdit
           type="edit"
           onChange={handleUpdate}
           style={{ color: "black" }}
         />
-
         <input
           className="title-T"
           type="text"
-          name="title"
-          placeholder={user.email}
+          name="email"
+          placeholder={user.userInfo.email}
+          onChange={handleChange}
+
         />
-          <AiFillEdit
-            type="edit"
-            onChange={handleUpdate}
-            style={{ color: "black" }}
-          />
-      
+        <AiFillEdit
+          type="edit"
+          onChange={handleUpdate}
+          style={{ color: "black" }}
+        />
         <input
           className="title-T"
           type="password"
-          name="title"
-          placeholder={user.password}
-        />
-          {" "}
-          <AiFillEdit
-            type="edit"
-            onChange={handleUpdate}
-            style={{ color: "black" }}
-          />
+          name="password"
+          defaultValue="tape your new password"
+          onChange={handleChange}
 
+        />{" "}
+        <AiFillEdit
+          type="edit"
+          onChange={handleUpdate}
+          style={{ color: "black" }}
+        />
         <input
           className="title-T"
           type="text"
-          name="title"
-          placeholder={user.parentsFullName}
-        />
-          <AiFillEdit
-            type="edit"
-            onChange={handleUpdate}
-            style={{ color: "black" }}
-          />
+          name="phone"
+          defaultValue={user.userInfo.phone}
+          onChange={handleChange}
 
-        <button type="submit" onClick={(e) => handleUpdateSubmit(e, user._id)}>
+        />
+        <AiFillEdit
+          type="edit"
+          onChange={handleUpdate}
+          style={{ color: "black" }}
+        />
+        <button type="submit" onClick={(e) => handleUpdateSubmit(e, user.userInfo._id)}>
           save changes
         </button>
       </div>

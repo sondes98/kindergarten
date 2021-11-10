@@ -42,7 +42,7 @@ export const getUsers = createAsyncThunk(
   'users/getUsers',
   async (info, { rejectWithValue }) => {
     try {
-      const res = await axios.get('http://localhost:5000/auth/users');
+      const res = await axios.get("http://localhost:5000/auth/users",info);
 
       return res.data
     } catch (error) {
@@ -50,12 +50,11 @@ export const getUsers = createAsyncThunk(
     }
   }
 );
-export const getSingleUser = createAsyncThunk(
-  'users/getSingleUser',
+export const getUser = createAsyncThunk(
+  'users/getUser',
   async (id, { rejectWithValue}) => {
     try {
       const res = await axios.get(`http://localhost:5000/auth/users/getuser/${id}`);
-    
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response.data.message);
@@ -102,7 +101,7 @@ export const updateImage = createAsyncThunk(
     try {
       const formData = new FormData();
       formData.append('profileImg', info.file);
-      const res = await axios.put(`http://localhost:5000/auth/users/uploadPic/${info.id}`, formData, {
+      const res = await axios.put(`http://localhost:5000/auth/users/uploadPic/${info._id}`, formData, {
         headers: { token: localStorage.getItem('token') },
       });
       dispatch(getUsers());
@@ -116,12 +115,14 @@ export const updateAccount = createAsyncThunk(
   'posts/updateInfo',
   async (info, { rejectWithValue, dispatch }) => {
     try {
-      const res = await axios.put(`http://localhost:5000/auth/users/updateInfo/${info.id}`, info.data, {
+      const res = await axios.put(`http://localhost:5000/auth/users/updateInfo/${info._id}`, info.data, {
         headers: { token: localStorage.getItem('token') },
       });
-      dispatch(getUsers());
+      dispatch(getUser());
       return res.data;
-    } catch (error) {
+    } catch (error)
+   {
+    console.log(error)
       return rejectWithValue(error.response.data.message);
     }
   }
@@ -204,26 +205,28 @@ const userSlice = createSlice({
       state.loading = false;
       state.errors = action.payload;
     },
-    [getSingleUser.pending]: (state) => {
+    [getUser.pending]: (state) => {
       state.loading = true;
     },
-    [getSingleUser.fulfilled]: (state, action) => {
+    [getUser.fulfilled]: (state, action) => {
       state.loading = false;
       state.user = action.payload;
       state.userErrors = null;
     },
-    [getSingleUser.rejected]: (state, action) => {
+    [getUser.rejected]: (state, action) => {
       state.loading = false;
       state.errors = action.payload;
     },
-    [addPic.pending]: (state) => {
+    [updateAccount.pending]: (state) => {
       state.loading = true;
     },
-    [addPic.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.Errors = null;
+    [updateAccount.fulfilled]: (state, action) => {
+      state.userInfo = action.payload.user;
+      state.token = action.payload.token;
+      state.isAuth = true;
+      state.errors = null;
     },
-    [addPic.rejected]: (state, action) => {
+    [updateAccount.rejected]: (state, action) => {
       state.loading = false;
       state.errors = action.payload;
     },

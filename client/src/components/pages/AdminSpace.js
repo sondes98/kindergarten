@@ -45,6 +45,27 @@ const AdminSpace = ({ history }) => {
                     <h1 className="columnHeader">Fullname</h1>
                   </div>
                 </th>
+                {/* <th
+                  colspan="1"
+                  role="columnheader"
+                  title="Toggle SortBy"
+                  className="rt-tn rt-resizable-header -cursor-pointer"
+                >
+                  <div className="rt-resizable-header-content">
+                    <h1 className="columnHeader">Gender</h1>
+                  </div>
+                </th> */}
+                <th
+                  colspan="1"
+                  role="columnheader"
+                  title="Toggle SortBy"
+                  className="rt-tn rt-resizable-header -cursor-pointer"
+                >
+                  <div className="rt-resizable-header-content">
+                    <h1 className="columnHeader">Phone</h1>
+                  </div>
+                </th>
+                
                 <th
                   colspan="1"
                   role="columnheader"
@@ -65,7 +86,7 @@ const AdminSpace = ({ history }) => {
                     <h1 className="columnHeader">Child Name</h1>
                   </div>
                 </th>
-                <th
+                {/* <th
                   colspan="1"
                   role="columnheader"
                   title="Toggle SortBy"
@@ -74,8 +95,17 @@ const AdminSpace = ({ history }) => {
                   <div className="rt-resizable-header-content">
                     <h1 className="columnHeader">Child Age</h1>
                   </div>
-                </th>
-
+                </th> */}
+                {/* <th
+                  colspan="1"
+                  role="columnheader"
+                  title="Toggle SortBy"
+                  className="rt-tn rt-resizable-header -cursor-pointer"
+                >
+                  <div className="rt-resizable-header-content">
+                    <h1 className="columnHeader">gender</h1>
+                  </div>
+                </th> */}
                 <th
                   colspan="1"
                   role="columnheader"
@@ -100,6 +130,14 @@ const AdminSpace = ({ history }) => {
                         {" "}
                         {user.parentsFullName}{" "}
                       </td>
+                      {/* <td role="cell" className="rt-td">
+                        {" "}
+                        {user.Pgender}{" "}
+                      </td> */}
+                      <td role="cell" className="rt-td">
+                        {" "}
+                        {user.phone}{" "}
+                      </td>
                       <td role="cell" className="rt-td">
                         {" "}
                         {user.email}{" "}
@@ -112,6 +150,10 @@ const AdminSpace = ({ history }) => {
                         {" "}
                         {`${newDate}`}{" "}
                       </td>
+                      {/* <td role="cell" className="rt-td">
+                        {" "}
+                        {user.Cgender}{" "}
+                      </td> */}
                       <td role="cell" className="rt-td">
                         <div className="actions-right">
                           <FaBan
@@ -231,6 +273,7 @@ const AdminSpace = ({ history }) => {
           </table>
         </div>
       </div>
+      
     </>
   );
 };

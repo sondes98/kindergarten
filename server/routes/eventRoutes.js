@@ -1,5 +1,6 @@
 const express = require('express');
 const {
+  deleteEvent,
   addEvent,
   getEvents,
 
@@ -23,6 +24,7 @@ const upload = multer({ storage });
 
 router.post('/addEvent', upload.single('photo'), authMiddleware, addEvent);
 router.get('/', getEvents);
+router.delete('/:id', deleteEvent);
 
 
 module.exports = router;

@@ -32,18 +32,19 @@
 }
 
 
-.Pnav{
-background-color: rgb(219 150 150 / 50%);
-height: 72px;
-display: flex;
-width: 100%;
-position: fixed;
-box-shadow: 1px 1px 7px 1px #7474742b;
-top:0;
+.Pnav {
+    z-index: 9999999999;
+    background-color: rgb(255 255 255 / 50%);
+    height: 90px;
+    display: flex;
+    width: 100%;
+    position: fixed;
+    box-shadow: 1px 1px 7px 1px #7474742b;
+    top: 0;
 }
 .Ppic {
-    width: 62px;
-    height: 60px;
+    width: 95px;
+    height: 85px;
     border-radius: 100%;
     /* display: block; */
     /* margin: 0 auto; */
@@ -91,20 +92,21 @@ top:0;
     position: relative;
     flex-direction: column;
 }
-.Pposts{
+.Ppost{
     display: flex;
-    flex-direction: column;
+    border-radius: 100%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .posts-side{
-    margin-top: 119px;
+    margin: 0px auto;
     background-image: url(https://kidslifedev.wpengine.com/wp-content/uploads/layerslider/KidsLife-Slider/black-board.jpg);
     background-color: #ffffff38;
-    margin-left: 50px;
     display: flex;
     width: 520px;
     border-radius: 10px;
-    height:400px;
+    height: 314px;
 }
 
 .title-P{
@@ -140,19 +142,24 @@ input:focus
 
 
 .Profile-link{
-    width: 220px;
+    width: 446px;
         list-style: none;
         text-decoration: none;
 
 }
 
 .Profile-link a{
+    display: inline-flex;
     text-decoration: none;
-    font-family: 'Josefin Sans';
-    font-weight: 200;
+    font-family: 'Bubblegum Sans';
     color: black;
     font-size: 23px;
-    letter-spacing: 2px;
+}
+.Profile-link h1{
+    width: 265px;
+    font-size: 25px;
+    font-family: 'Bubblegum Sans';
+    margin: 22px 0 0 0;
 }
 
 .btn-file {
@@ -188,13 +195,6 @@ input:focus
     font-family: 'Bubblegum Sans';
   }
 
-  .allposts{
-    background-color: #ffffff36;
-    width: 520px;
-    margin-top: 128px;
-    display: flex;
-    justify-content: space-evently;
-  }
 .cardP h1{
     font-family: 'Bubblegum Sans';
     color: white;
@@ -202,13 +202,7 @@ input:focus
     text-align: center;
     letter-spacing: 2px;
 }
-  .Ppost{
-    margin-left: 117px;
-    border-radius: 100%;
-    display: block;
-    /* margin: 0 auto; */
-    width: 289px;
-  }
+
 .Ppost img{
     width: 341px;
     border-radius: 100%;
@@ -223,4 +217,11 @@ input:focus
     margin-top: -206px;
     z-index: 999;
     margin-left: 79px;
+}
+.containerPro{
+    background-image: url(../images/bg3.jpg);
+    background-repeat: no-repeat;
+    padding-top:100px;
+    padding-bottom:100px;
+    margin-bottom: 50px;
 }

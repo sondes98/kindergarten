@@ -8,7 +8,6 @@ const {
     getUsers,
     getSingleUser,
     deleteAccount,
-    addPic,
     updateImage,
   } = require("../controllers/userController");
   const authMiddleware = require('../middleware/authMiddleware');
@@ -44,5 +43,6 @@ router.put("/updateInfo/:id", updateAccount);
 router.get('/', getUsers);
 router.get('/getuser/:id', getSingleUser);
 router.delete('/:id', deleteAccount)
+
 
 module.exports = router;

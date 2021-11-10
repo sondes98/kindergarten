@@ -8,15 +8,14 @@ import {
   updatePostComment,
 } from "../../redux/postSlice";
 import { updateAccount, updateImage } from "../../redux/userSlice";
-import { getUsers } from "../../redux/userSlice";
+import { getUsers, getUser } from "../../redux/userSlice";
 import "./Profile.css";
 import { Link } from "react-router-dom";
 import { AiFillLike, AiFillEdit } from "react-icons/ai";
 import { FaComment, FaSchool } from "react-icons/fa";
-import {IoIosLogOut} from "react-icons/io"
+import { IoIosLogOut } from "react-icons/io";
 
-
-const Profile = ({ history }) => {
+const Profile = ({ history, match }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const post = useSelector((state) => state.post);
@@ -27,9 +26,13 @@ const Profile = ({ history }) => {
     } else {
       dispatch(getPosts());
       dispatch(getUsers());
+      dispatch(getUser());
     }
   }, [user.isAuth]);
   const [postInfo, setPostInfo] = useState({});
+  console.log(postInfo)
+  const [userInfo, setUserInfo] = useState({});
+
   const [updatedInfo, setUpdatedInfo] = useState({});
   const [file, setFile] = useState({});
   const handleChange = (e) => {
@@ -59,48 +62,37 @@ const Profile = ({ history }) => {
 
   return (
     <>
-       
-        
-          <div className="Profile-nav">
-          <nav className="Pnav">
-            <ul className="Profile-list">
-              <li className="Profile-link">
-                <Link to="/"> <FaSchool/> Home </Link>
-              </li>
-              
-            </ul>
-              <Link to={`/user/${user._id}`} className="profilePic">
-                <img
-                  className="Ppic"
-                  src={user.userInfo.profilePic.imageURL}
-                  alt=""
-                />
-                <h1>{user.userInfo.parentsFullName}</h1>
+      <div className="Profile-nav">
+        <nav className="Pnav">
+          <ul className="Profile-list">
+            <li className="Profile-link" style={{ padding: "10px" }}>
+              <Link to="/">
+                {" "}
+                <FaSchool /> Home{" "}
               </Link>
+            </li>
+          </ul>
+          <li className="Profile-link">
+            <Link to={`/user/${user.userInfo._id}`} className="profilePic">
+              <img
+                className="Ppic"
+                src={user.userInfo.profilePic.imageURL}
+                alt=""
+              />
               <li className="Profile-link">
+                <h1>{user.userInfo.parentsFullName}</h1>
                 <Link to="/login" onClick={() => dispatch(logout())}>
-                  Log out <IoIosLogOut/>{" "}
+                  Log out <IoIosLogOut />{" "}
                 </Link>
               </li>
-          </nav>
-         
-        </div>
-            
-
+            </Link>
+          </li>
+        </nav>
+      </div>
+      <div className="containerPro">
         <div className="posts-side">
-          <div>
-            {(user.role === "admin") ? (
-              <Link to="/admin">
-                <button>Admin Space</button>
-              </Link>
-            ) : (
-              <></>
-            )}
-          </div>
-
           <form className="cardP">
             <h1>Share with us your child experience here ...</h1>
-
             <input
               type="text"
               name="title"
@@ -133,60 +125,53 @@ const Profile = ({ history }) => {
             </button>
           </form>
         </div>
+      </div>
+      <br />
+      <div className="allposts">
+        <div className="Ppost">
+          {post?.posts &&
+            post?.posts.map((post) => {
+              const newDate = new Date(post.createdAt).toLocaleDateString();
+              const time = new Date(post.createdAt).toLocaleTimeString();
+              return (
+                <div className="OnePost">
+                  <span>{`${newDate} ${time}`}</span>
 
-        <br />
-        <div className="allposts">
-          <div className="Ppost">
-            {post?.posts &&
-              post?.posts.map((post) => {
-                const newDate = new Date(post.createdAt).toLocaleDateString();
-                const time = new Date(post.createdAt).toLocaleTimeString();
-                return (
-                  <>
-                    <span>{`${newDate} ${time}`}</span>
-
-                    <h4>{post.owner.parentsFullName}</h4>
-                    <Link to={`/post/${post._id}`}>
-                      {" "}
-                      <img
-                        src={post.image.imageURL}
-                        alt="workshop"
-                        width="200"
+                  <h4>{post.owner.parentsFullName}</h4>
+                  <Link to={`/post/${post._id}`}>
+                    {" "}
+                    <img src={post.image.imageURL} alt="workshop" width="200" />
+                  </Link>
+                  <div className="comlikeP">
+                    <h1 className="num">
+                      {post.likes.length}{" "}
+                      <AiFillLike
+                        className="likebtn"
+                        style={
+                          checkLike(post)
+                            ? { color: "#b3b3f7" }
+                            : { color: "#cfcfcfa1" }
+                        }
+                        onClick={() => handleLike(post._id)}
                       />
-                    </Link>
-                    <div className="comlikeP">
-                      <h1 className="num">
-                        {post.likes.length}{" "}
-                        <AiFillLike
-                          className="likebtn"
-                          style={
-                            checkLike(post)
-                              ? { color: "#b3b3f7" }
-                              : { color: "#cfcfcfa1" }
-                          }
-                          onClick={() => handleLike(post._id)}
-                        />
-                      </h1>
-
-                      <h1 className="num">
-                        {post.comments.length}{" "}
-                        <FaComment
-                          className="likebtn"
-                          style={
-                            checkComment(post)
-                              ? { color: "blue" }
-                              : { color: "gray" }
-                          }
-                        />
-                      </h1>
-                    </div>
-
-                    <br />
-                  </>
-                );
-              })}
-          </div>
+                    </h1>
+                    <h1 className="num">
+                      {post.comments.length}{" "}
+                      <FaComment
+                        className="likebtn"
+                        style={
+                          checkComment(post)
+                            ? { color: "blue" }
+                            : { color: "gray" }
+                        }
+                      />
+                    </h1>
+                  </div>
+                </div>
+              );
+            })}
         </div>
+      </div>
     </>
   );
 };

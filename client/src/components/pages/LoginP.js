@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { login,clearErrors } from "../../redux/userSlice";
 import "./login.css";
 import { Link } from "react-router-dom";
+import { FaSchool ,FaUserAlt } from "react-icons/fa";
+
 
 const LoginP = ({history}) => {
   const dispatch = useDispatch();
@@ -29,11 +31,17 @@ const LoginP = ({history}) => {
 
   return (
     <div className="login-container">
-      <li className="Profile-link">
-                    <Link to="/">Home </Link>
+      <div className="linksL">
+      <li className="RegisterHome">
+                    <Link className="RegisterHome" to="/"> <FaSchool/> Home </Link>
                   </li>
-       
-      <form className="form-l">
+                  <li  className="RegisterHome">
+                <Link  className="RegisterHome" to="/register"> <FaUserAlt/>Register</Link>
+              </li>
+      </div>
+     
+       <div className="registerForm">
+       <form className="form-l">
         {/* <label className="form-g">Email</label> */}
         <input
           className="form-control"
@@ -56,6 +64,10 @@ const LoginP = ({history}) => {
         </button>
         {user && user.loginErrors && <p>{user.loginErrors} </p>}
       </form>
+      {user && user.loginErrors && <p>{user.loginErrors}</p>}
+
+       </div>
+      
      
     </div>
   );

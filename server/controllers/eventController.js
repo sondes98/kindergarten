@@ -25,8 +25,17 @@ const getEvents = async (req, res) => {
     res.status(500).json({ message: error });
   }
 };
+const deleteEvent = async (req, res) => {
+  try {
+    const deletedPost = await Post.findByIdAndDelete(req.params.id);
+    res.status(200).json(deletedPost);
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+};
 
 module.exports = {
+  deleteEvent,
   addEvent,
   getEvents,
 };
