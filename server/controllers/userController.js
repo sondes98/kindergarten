@@ -2,8 +2,8 @@ const User = require("../models/userSchema");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
-const cloudinary = require("../helpers/cloudinary");
-
+/* const cloudinary = require("../helpers/Cloudinary");
+ */
 
 const registerController = async (req, res) => {
   try {
@@ -136,7 +136,7 @@ const deleteAccount = async (req, res) => {
   }
 };
 
-const updateImage = async (req, res) => {
+/* const updateImage = async (req, res) => {
   try {
     const imageInfo = await cloudinary.uploader.upload(req.file.path);
     const existUser = await User.findById(req.params.id);
@@ -150,11 +150,11 @@ const updateImage = async (req, res) => {
     console.log(error);
     res.status(500).json({ message: error });
   }
-};
+}; */
 
 module.exports = {
-  updateImage,
-  registerController,
+/*   updateImage,
+ */  registerController,
   loginController,
   updateAccount,
   getSingleUser,

@@ -1,16 +1,16 @@
-const cloudinary = require("../helpers/cloudinary");
-const event = require("../models/eventSchema");
+/* const cloudinary = require("../helpers/cloudinary");
+ */const event = require("../models/eventSchema");
 
 const addEvent = async (req, res) => {
   try {
     const newBody = JSON.parse(req.body.info);
-    const imageInfo = await cloudinary.uploader.upload(req.file.path);
-    const newEvent = await event.create({
+/*     const imageInfo = await cloudinary.uploader.upload(req.file.path);
+ */    const newEvent = await event.create({
       title: newBody.title,
       description: newBody.description,
       owner: req.userId,
-      image: { imageURL: imageInfo.url, public_id: imageInfo.public_id },
-    });
+/*       image: { imageURL: imageInfo.url, public_id: imageInfo.public_id },
+ */    });
     res.json(newEvent);
   } catch (error) {
     res.status(500).json({ message: error });

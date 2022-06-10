@@ -6,12 +6,12 @@ const {
 
 } = require('../controllers/eventController');
 const authMiddleware = require('../middleware/authMiddleware');
-const { CloudinaryStorage } = require('multer-storage-cloudinary');
-const multer = require('multer');
+/* const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const multer = require('multer'); */
 const router = express.Router();
-const cloudinary = require('../helpers/cloudinary');
-
-const storage = new CloudinaryStorage({
+/* const cloudinary = require('../helpers/cloudinary');
+ */
+/* const storage = new CloudinaryStorage({
   cloudinary,
   params: {
     folder: 'events'
@@ -19,10 +19,10 @@ const storage = new CloudinaryStorage({
 });
 
 
-const upload = multer({ storage });
+const upload = multer({ storage }); */
 
 
-router.post('/addEvent', upload.single('photo'), authMiddleware, addEvent);
+router.post('/addEvent'/* , upload.single('photo') */, authMiddleware, addEvent);
 router.get('/', getEvents);
 router.delete('/:id', deleteEvent);
 

@@ -1,5 +1,5 @@
-const cloudinary = require("../helpers/cloudinary");
-const Post = require("../models/postSchema");
+/* const cloudinary = require("../helpers/Cloudinary");
+ */const Post = require("../models/postSchema");
 
 /**
  *@param<string>
@@ -8,13 +8,13 @@ const Post = require("../models/postSchema");
 const addPost = async (req, res) => {
   try {
     const newBody = JSON.parse(req.body.info);
-    const imageInfo = await cloudinary.uploader.upload(req.file.path);
-    const newPost = await Post.create({
+/*     const imageInfo = await cloudinary.uploader.upload(req.file.path);
+ */    const newPost = await Post.create({
       title: newBody.title,
       description: newBody.description,
       owner: req.userId,
-      image: { imageURL: imageInfo.url, public_id: imageInfo.public_id },
-    });
+/*       image: { imageURL: imageInfo.url, public_id: imageInfo.public_id },
+ */    });
     res.json(newPost);
   } catch (error) {
     res.status(500).json({ message: error });
@@ -52,7 +52,7 @@ const updatePost = async (req, res) => {
   }
 };
 
-const updatePostImage = async (req, res) => {
+/* const updatePostImage = async (req, res) => {
   try {
     const imageInfo = await cloudinary.uploader.upload(req.file.path);
     const existPost = await Post.findById(req.params.id);
@@ -64,7 +64,7 @@ const updatePostImage = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error });
   }
-};
+}; */
 
 const postLikes = async (req, res) => {
   try {
@@ -117,7 +117,7 @@ module.exports = {
   getPosts,
   getSinglePost,
   updatePost,
-  updatePostImage,
-  postLikes,
+/*   updatePostImage,
+ */  postLikes,
   addComment,
 };

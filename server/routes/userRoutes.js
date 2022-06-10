@@ -8,24 +8,24 @@ const {
     getUsers,
     getSingleUser,
     deleteAccount,
-    updateImage,
-  } = require("../controllers/userController");
+/*     updateImage,
+ */  } = require("../controllers/userController");
   const authMiddleware = require('../middleware/authMiddleware');
-const { CloudinaryStorage } = require('multer-storage-cloudinary');
-const multer = require('multer');
+/* const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const multer = require('multer'); */
 const router = express.Router();
-const cloudinary = require('../helpers/cloudinary');
-
-const storage = new CloudinaryStorage({
+/* const cloudinary = require('../helpers/Cloudinary');
+ */
+/* const storage = new CloudinaryStorage({
   cloudinary,
   params: {
     folder: 'images'
   },
-});
+}); */
 
 
-const upload = multer({ storage });
-
+/* const upload = multer({ storage });
+ */
 
 
 
@@ -37,8 +37,8 @@ router.post(
   }),
   registerController
 );
-router.put('/uploadPic/:id', upload.single('profileImg'), updateImage);
-router.post("/login", loginController);
+/* router.put('/uploadPic/:id', upload.single('profileImg'), updateImage);
+ */router.post("/login", loginController);
 router.put("/updateInfo/:id", updateAccount);
 router.get('/', getUsers);
 router.get('/getuser/:id', getSingleUser);

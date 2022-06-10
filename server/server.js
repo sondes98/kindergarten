@@ -14,11 +14,11 @@ app.use(express.static(__dirname));
 const cors = require("cors");
 app.use(cors());
 
-//setup for deployment :
+//socket:
 
-io.on("connection", () => {
+/* io.on("connection", () => {
   console.log("a user is connected");
-});
+}); */
 
 //ROUTES
 const userRoute = require("./routes/userRoutes");
@@ -28,19 +28,18 @@ const eventRoute = require("./routes/eventRoutes");
 app.use("/auth/users", userRoute);
 app.use("/auth/posts", postRoute);
 app.use("/auth/events", eventRoute);
-app.use("/uploads", express.static(path.join(__dirname, "../", "uploads")));
 
-// deployment
-// app.use(express.static(path.join(__dirname, "../", "client", "build")));
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../", "client", "build", "index.html"));
-// });
-//CONNECTING TO DB
-mongoose.connect(process.env.MONGO_URI, (err) =>
-  err ? console.error(err) : console.log("database is connected")
-);
+// const CONNECTION_URL_local = "mongodb://localhost:27017/test";
+const CONNECTION_URL_docker = "mongodb://admin:password@mongodb"
+const PORT = process.env.PORT || 5000;
 
-//CREATING SERVER
-app.listen(process.env.PORT, (err) =>
-  err ? console.error(err) : console.log("server is listening")
-);
+mongoose
+  .connect(CONNECTION_URL_docker, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() =>
+    app.listen(PORT, () =>
+      console.log(`Server Running on Port: http://localhost:${PORT}`)
+    )
+  )
+  .catch((error) => console.log(`${error} did not connect`));
+
+mongoose.set("useFindAndModify", false);

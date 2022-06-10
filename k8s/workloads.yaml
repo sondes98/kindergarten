@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-deployment
+  labels:
+    app: react-deploy
+spec: 
+  selector:
+    matchLabels: 
+      app: kindergarten-ui
+  replicas: 1
+  template: #POD TEMPLATE
+    metadata: 
+      labels:
+        app: kindergarten-ui
+    spec:
+      containers: 
+      - name: front-container
+        image: sondes98/kindergarten-ui
+        ports: 
+        - containerPort: 80
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backdeployment
+  labels:
+    app: node-deploy
+spec: 
+  selector:
+    matchLabels: 
+      app: kindergarten-api
+  replicas: 1
+  template:
+    metadata: 
+      labels:
+        app: kindergarten-api
+    spec:
+      containers: 
+      - name: backend-container
+        image: sondes98/kindergarten-backend
+        ressources:
+          limits: 
+            memory: "128Mi"
+            cpu: "500m"
+        ports: 
+        - containerPort: 3000
+
